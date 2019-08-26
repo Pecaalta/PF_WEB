@@ -1,0 +1,38 @@
+.cardUser {
+    height: 70px;
+    padding: 15px;
+    background: #fff;
+    border-bottom: 1px solid #E5E5E5;
+    &.diffusion {
+        background: #EDC845;
+        figure {
+            background: rgba(0, 0, 0, 0.06);
+            i {
+                color: #6B5918;
+            }
+        }
+        h4 {
+            color: rgba(0, 0, 0, 0.87);
+        }
+    }
+    figure {
+        float: left;
+        margin-right: 8px; 
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    h4 {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 8px;
+    }
+}

@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*:focus { outline: none !important; }
+* {
+  letter-spacing: 0.04em;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+  }
+  
+  @media (min-width: 576px) {
+    .container {
+      max-width: 100%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 100%;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1200px;
+    }
+  }
+  h1 {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 24px;
+      text-align: center;
+      color: #595959;
+      margin: auto
+  }
+  h2 {
+      font-size: 24px;
+      line-height: 28px;
+      display: flex;
+      align-items: center;
+      color: #595959;
+  }

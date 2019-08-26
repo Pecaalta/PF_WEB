@@ -1,0 +1,12 @@
+<div class='message news' [class.current]='data.recivido != admin' *ngIf='data.id_noticia'>
+    <figure>
+        <img [src]="data.img_noticia">
+    </figure>
+    <div class="news_body">
+        <h2>{{data.text_noticia}}</h2>
+        <p>{{data.title_noticia}}</p>
+    </div>
+</div>
+<div class='message' [class.current]='data.recivido != admin'>
+    {{ data.text }}
+</div>

@@ -1,0 +1,36 @@
+<app-nav-bar></app-nav-bar>
+<section class="draft">
+    <h1>Enpresas y ideas</h1>
+    <div class='box-draft'>
+        <div *ngFor="let oDraft of lDraft" class="card-draft" [class.proyecto]="!oDraft.rut || oDraft.rut == ''" [class.company]="oDraft.rut && oDraft.rut != ''">
+            <div class="logo" >
+                <img *ngIf="oDraft.logo && oDraft.logo != ''" [src]="oDraft.logo" >
+                <h2 *ngIf="!oDraft.logo || oDraft.logo == ''" >{{ oDraft.name }}</h2>
+            </div>
+            <div class="data">
+                <ul>
+                    <li *ngIf="!oDraft.rut || oDraft.rut == ''"><span>Tipo</span> Enprendiminto</li>
+                    <li *ngIf=" oDraft.rut && oDraft.rut != ''"><span>Tipo</span> Empresa</li>
+                    <li *ngIf=" oDraft.rut && oDraft.rut != ''"><span>Rut</span> {{ oDraft.rut }}</li>
+                    <li><span>Empleados</span> {{ oDraft.personal }}</li>
+                    <li *ngIf="!oDraft.rut || oDraft.rut == ''"><span>Estado</span> Pendinte</li>
+                </ul>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon>person_add</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                        <mat-icon>info</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-draft"  routerLink="/user/draft/new">
+            <div class="icon_add">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+
+        
+    </div>
+</section>

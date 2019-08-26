@@ -1,0 +1,40 @@
+<section class="container">
+    <div class="chatBox" [class.client]='!admin'>
+        <div class="chatUsers" *ngIf="admin">
+            <app-chat-user [isDiffusion]='true' [name]="'Nueva difusion'" (click)="newDifusion()"></app-chat-user>
+            <app-chat-user *ngFor="let user of listUser" [img]="user.img" [name]="user.name" (click)="getChat(user)"></app-chat-user>
+        </div>
+        <main class="chatMessage">
+            <div class="notchat" *ngIf="!currentUser && admin">
+                    <mat-icon>how_to_reg</mat-icon>
+                <h2>No hay mas consultas</h2>
+            </div>
+            <div class='textBox' #msg_box id='msg_box' *ngIf="currentUser">
+                <app-chat-message *ngFor="let msg of currentUser.chat" [data]='msg' [admin]='admin'></app-chat-message>
+            </div>
+        </main>
+        <main class="chatFiltro" *ngIf='currentUser && FilterCurrent && FilterCurrent.filtro'>
+            <mat-chip-list>
+                <mat-chip *ngFor='let fiter of FilterCurrent.filtro;let i = index;'>
+                    {{ fiter.type }}
+                    <mat-icon matChipRemove (click)="removeFilter(i)">clear</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+            <button mat-icon-button (click)="Filters()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </main>
+        <div class="chatText" *ngIf="currentUser || !admin">
+            <textarea [(ngModel)]="newMsgtext"></textarea>
+            <button mat-icon-button *ngIf='FilterCurrent != null && FilterCurrent.filtro' (click)="Filters()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button >
+                <mat-icon>attach_file</mat-icon>
+            </button>
+            <button mat-icon-button (click)="send()">
+                <mat-icon>send</mat-icon>
+            </button>
+        </div>
+    </div>
+</section>

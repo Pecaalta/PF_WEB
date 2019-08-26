@@ -1,0 +1,92 @@
+.banner {
+    width: 100%;
+    height: 200px;
+    background-image: url('/assets/bg_2.jpg');
+    background-size: cover;
+}
+.input,textarea,.box-input {
+    background: #F4F4F4;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+    color: #595959;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    margin: 15px 0;
+}
+.box-map {
+    background: #F4F4F4;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 4px;
+    #map {
+        border-radius: 6px;
+        overflow: hidden;
+
+    }
+}
+.img-sector {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ddd;
+    display: inline-block;
+    margin: 0;
+}
+.text-sector {
+    margin-left: 5px;
+}
+
+
+.mat-checkbox {
+    display: block;
+}
+
+::ng-deep .mat-checkbox-label {
+    display: flex;
+    align-items: center;
+}
+.h-200 {
+    height: 200px;
+}
+.h-400 {
+    height: 400px;
+}
+
+h2 {
+    display: block;
+    font-size: 24px;
+    color: #595959;
+    text-align: center;    
+}
+h3 {
+    font-size: 18px;    
+    color: #595959;
+}
+p {
+    color: #999;
+}
+.card_ODS {
+    position: relative;
+    box-shadow: 0px 4px 8px rgba(47, 47, 47, 0.14);
+    border-radius: 17px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: solid 2px rgba(0, 0, 0, 0.01);
+    img {
+        width: 100%;
+    }
+    &.active {
+        border: solid 2px #6200EE;
+    }
+}
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    mat-radio-button {
+        margin: 5px;
+
+    }
+}

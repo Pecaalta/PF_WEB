@@ -1,0 +1,7 @@
+<div class="cardUser" [class.diffusion]='isDiffusion'>
+    <figure>
+        <img *ngIf='!isDiffusion' [src]="img" alt="" srcset="">
+        <i *ngIf='isDiffusion' class="fas fa-bell"></i>
+    </figure>
+    <h4>{{ name }}</h4>
+</div>

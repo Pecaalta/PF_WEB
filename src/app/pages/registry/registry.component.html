@@ -1,0 +1,12 @@
+<div class="box-login">
+    <div class='box'>
+        <h1 class='text-center'>Registro</h1>
+        <input class='input' [(ngModel)]="email" (keyup.enter)="login()" placeholder="Usuario" type="text">
+        <input class='input' [(ngModel)]="name" (keyup.enter)="login()" placeholder="Nombre" type="text">
+        <input class='input' [(ngModel)]="pass" (keyup.enter)="login()" placeholder="Contraseña" type="password">
+        
+        <input class='input' [(ngModel)]="repass" (keyup.enter)="login()" placeholder="Repetir contraseña" type="password">
+        <br>
+        <button mat-raised-button color="primary" (click)="login()" [disabled]=" email == '' || pass == '' " >Entrar</button>
+    </div>
+</div>

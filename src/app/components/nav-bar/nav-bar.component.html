@@ -1,0 +1,47 @@
+<header>
+    <nav class="social d-none d-sm-none d-md-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col text-right">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="options container navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-text d-block d-sm-block d-md-block d-lg-none" *ngIf='user'>
+            <figure matRipple class="avatar"  [matMenuTriggerFor]="menu">
+                <img  src="https://cdn.pixabay.com/photo/2015/04/20/13/45/wool-731515_960_720.jpg" alt="" srcset="">
+            </figure>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Perfil</button>
+                <button mat-menu-item (click)="logout()">Salir</button>
+            </mat-menu>
+        </div>
+        <button *ngIf='!user' class='d-block d-sm-block d-md-block d-lg-none' mat-button routerLink="/login">Entrar</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li  *ngFor="let link of links" [routerLink]="link.path" routerLinkActive="active" class="nav-item">
+                    <span class="nav-link">{{ link.name }}</span>
+                </li>
+            </ul>
+            <span class="navbar-text  d-none d-sm-none d-md-none d-lg-block">
+                <div *ngIf='user'>
+                    <figure matRipple class="avatar"  [matMenuTriggerFor]="menu">
+                        <img  src="https://cdn.pixabay.com/photo/2015/04/20/13/45/wool-731515_960_720.jpg" alt="" srcset="">
+                    </figure>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Perfil</button>
+                        <button mat-menu-item (click)="logout()">Salir</button>
+                    </mat-menu>
+                </div>
+                <button *ngIf='!user' mat-button routerLink="/login" >Entrar</button>
+            </span>
+        </div>
+    </nav>
+</header>

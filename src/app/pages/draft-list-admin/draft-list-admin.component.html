@@ -1,0 +1,45 @@
+<app-nav-bar></app-nav-bar>
+<div id='map' style="height: 300px;" >
+</div>
+<div class="container">
+    <div class="row">
+        <h1>Enprendimintos</h1>
+    </div>
+    <div class="row">
+        <table class="w-100 mat-elevation-z8">
+            <colgroup>
+                <col width='40'>
+                <col>
+                <col width='200'>
+                <col width='150'>
+            </colgroup>
+            <tr>
+                <th></th>
+                <th>Nombre</th>
+                <th>RUT/TUC</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let item of dataSource" (click)="toDraft(item)" [class.pendinte]='item.status == 0' [class.rechasada]='item.status == 2'>
+                <td>
+                    <mat-icon matTooltip="{{ item.rut || item.rut == '' ? 'Empresa' : 'Proyecto' }}" >{{ item.rut || item.rut == '' ? 'work_outline' : 'work' }}</mat-icon>
+                </td>
+                <td>{{item.name}}</td>
+                <td>{{item.rut}}</td>
+                <td class='text-right'>
+                    <button matTooltip='Validar' *ngIf="item.status == 0" mat-icon-button>
+                        <mat-icon>error_outline</mat-icon>
+                    </button>
+                    <button matTooltip='Editar' mat-icon-button>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button matTooltip='Eliminar' mat-icon-button>
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </table>
+            
+    </div>
+        
+</div>
+<app-footer></app-footer>

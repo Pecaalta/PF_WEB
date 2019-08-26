@@ -1,0 +1,133 @@
+<app-nav-bar></app-nav-bar>
+<div class="banner mb-5"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Nuevo proyecto</h2>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <input class='input' [(ngModel)]="nDraft.name" placeholder="Nombre" type="text">
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <input class='input' [(ngModel)]="nDraft.rut" placeholder="RUT/RUC" type="text">
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <textarea class='h-200 [(ngModel)]="nDraft.description"' placeholder="Descripcion del proyecto"></textarea>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="box-input h-200">
+                <mat-checkbox *ngFor="let oSector of nDraft.sector"  labelPosition="after">
+                  <figure class="img-sector">
+                    <img src="{{oSector.img }}" alt="" srcset="">
+                  </figure>
+                  <span class='text-sector'>{{ oSector.name }}</span>
+                </mat-checkbox>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="box-map">
+                <div id='map' style="height: 300px;" ></div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>ODS (OBJETIVO DE DESAROLLO SOSTENIBLES)</h3>
+            <p>
+                    Los Objetivos de Desarrollo Sostenible (ODS), también conocidos como Objetivos Mundiales, son un llamado universal a la adopción de medidas para poner fin a la pobreza, proteger el planeta y garantizar que todas las personas gocen de paz y prosperidad.Toda empresa deve tener almenos 1
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[0]' (click)="nDraft.ods[0] = !nDraft.ods[0]"><img src="/assets/ods/01.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[1]' (click)="nDraft.ods[1] = !nDraft.ods[1]"><img src="/assets/ods/02.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[2]' (click)="nDraft.ods[2] = !nDraft.ods[2]"><img src="/assets/ods/03.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[3]' (click)="nDraft.ods[3] = !nDraft.ods[3]"><img src="/assets/ods/04.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[4]' (click)="nDraft.ods[4] = !nDraft.ods[4]"><img src="/assets/ods/05.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[5]' (click)="nDraft.ods[5] = !nDraft.ods[5]"><img src="/assets/ods/06.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[6]' (click)="nDraft.ods[6] = !nDraft.ods[6]"><img src="/assets/ods/07.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[7]' (click)="nDraft.ods[7] = !nDraft.ods[7]"><img src="/assets/ods/08.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[8]' (click)="nDraft.ods[8] = !nDraft.ods[8]"><img src="/assets/ods/09.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[9]' (click)="nDraft.ods[9] = !nDraft.ods[9]"><img src="/assets/ods/10.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[10]' (click)="nDraft.ods[10] = !nDraft.ods[10]"><img src="/assets/ods/11.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[11]' (click)="nDraft.ods[11] = !nDraft.ods[11]"><img src="/assets/ods/12.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[12]' (click)="nDraft.ods[12] = !nDraft.ods[12]"><img src="/assets/ods/13.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[13]' (click)="nDraft.ods[13] = !nDraft.ods[13]"><img src="/assets/ods/14.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[14]' (click)="nDraft.ods[14] = !nDraft.ods[14]"><img src="/assets/ods/15.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[15]' (click)="nDraft.ods[15] = !nDraft.ods[15]"><img src="/assets/ods/16.png" ></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-2">
+            <div class="card_ODS" [class.active]='nDraft.ods[16]' (click)="nDraft.ods[16] = !nDraft.ods[16]"><img src="/assets/ods/17.png" ></div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>Datos opcionales</h3>
+            <p>
+                Datos sensibles o opcionales es informacion que no nesesita dar, pues es pribada de la empresa o proyecto. Aunque puede ser util para planificar beneficios o eventos, esta es informacion que no es nesesaraia para registrar su enprendiminto.
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-9">
+            <textarea [(ngModel)]="nDraft.debts" placeholder="Deudas, prestamos he informaciones relebante" class='mt-0 h-400'></textarea>
+        </div>
+        <div class="col-sm-12 col-md-3">
+            <label id="radio-group-label">Personal</label>
+            <mat-radio-group class="radio-group" [(ngModel)]="nDraft.personal">
+                <mat-radio-button value="1">Mono tributo</mat-radio-button>
+                <mat-radio-button value="5">Menos de 5</mat-radio-button>
+                <mat-radio-button value="10">Menos de 10</mat-radio-button>
+                <mat-radio-button value="50">Menos de 50</mat-radio-button>
+                <mat-radio-button value="100">Menos de 100</mat-radio-button>
+                <mat-radio-button value="-1">Mas de 100</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>Antes de continuar se le infroma, que le puede interesar</h3>
+        </div>
+        <div class="col-12">
+            <div class='box-input mt-0 h-200'>
+                <h5>Ley 18.331 - Protección de Datos Personales y acción de Habeas Data</h5>
+                <p>"El derecho a la protección de los Datos Personales es inherente a la persona humana, por lo que está comprendido en el Artículo 72 de la Constitución de la República."</p>
+                <a href="https://www.impo.com.uy/bases/leyes/18331-2008/29" target="_blank">Ley 18.331 (Protección de Datos Personales y acción de Habeas Data)</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-12">
+            <button mat-raised-button color="primary" (click)="newProyect()">Listo</button>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
