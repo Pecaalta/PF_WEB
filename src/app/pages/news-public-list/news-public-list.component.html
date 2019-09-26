@@ -1,0 +1,25 @@
+<app-nav-bar></app-nav-bar>
+<div class="container mt-3 animated fadeIn">
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <div class="row card-public-news" *ngFor="let news of lNews">
+                <div class="col-12">
+                    <h1 routerLink="{{ '/news/' + news.id }}">{{ news.title }}</h1>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <figure routerLink="{{ '/news/' + news.id }}">
+                        <img [src]="url + '/' + news.url_img">
+                    </figure>
+                </div>
+                <div class="col-sm-12 col-md-9">
+                    <span routerLink="{{ '/news/' + news.id }}">{{ news.created_at | printDateString }}</span>
+                    <p routerLink="{{ '/news/' + news.id }}">{{  news.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <input class='input' placeholder="Buscar noticia" type="text">
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

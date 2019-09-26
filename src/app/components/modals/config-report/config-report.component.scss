@@ -1,0 +1,28 @@
+
+.mat-checkbox {
+    display: inline-block;
+    width: 49%!important;
+    min-width: 200px!important;
+}
+
+::ng-deep .mat-checkbox-label {
+    display: flex;
+    align-items: center;
+}
+.h-calc {
+    height: calc(100% - 50px);
+    max-height: calc(100vh - 50px);
+}
+.mat-checkbox-layout {
+    white-space: normal !important;
+}
+.mat-radio-label {
+    white-space: normal !important;
+}
+.box-input {
+    margin-top: 0;
+}
+.w-50 {
+    width: 48%;
+    display: inline;
+}

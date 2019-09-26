@@ -3,7 +3,9 @@ export interface userSession {
     name?: string,
     email?:string,
     img?:string,
-    admin?:boolean,
+    url_img?:string,
+    role_name?:string,
+    admin?:string,
     active?:boolean,
     remember_token?:string,
 }

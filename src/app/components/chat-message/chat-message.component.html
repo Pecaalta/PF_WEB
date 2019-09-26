@@ -8,5 +8,8 @@
     </div>
 </div>
 <div class='message' [class.current]='data.recivido != admin'>
-    {{ data.text }}
+    <div class="box-msg">
+            {{ data.text }}
+    </div>
 </div>
+<span class='date' [class.current]='data.recivido != admin' *ngIf="separar">{{data.data_create.toDate() | date: 'hh:mm'}}</span>

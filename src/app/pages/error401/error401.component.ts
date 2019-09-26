@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MetadataService } from 'src/app/services/metadata.service';
 
 @Component({
   selector: 'app-error401',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Error401Component implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _MetadataService :MetadataService
+    ) { }
 
   ngOnInit() {
+    this._MetadataService.setDefaultMeta();
   }
 
 }

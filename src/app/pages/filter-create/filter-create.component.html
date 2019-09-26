@@ -1,0 +1,72 @@
+<app-nav-bar></app-nav-bar>
+<div class="banner mb-5 animated fadeIn"></div>
+<div class="container animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <h2>Nuevo Filtro</h2>
+        </div>
+        <div class="col-sm-10">
+            <input class='input' [(ngModel)]="oFilter.name" placeholder="Nombre" type="text">
+        </div>
+        <div class="col-sm-2">
+            <button mat-raised-button color="primary" class='m-default btn-height-input w-100' (click)="save()">Guardar</button>
+        </div>
+        <div class="col-sm-4">
+            <div class="box-input">
+                <mat-select [(value)]="configuration.columna">
+                    <mat-option *ngFor="let item of default.columna" (click)="configuration.default = null;type = item.type;configuration.comparador = default.comparador[item.type][0]" [value]="item.name">{{item.name | rename}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div [class]="configuration.comparador == 'vacio' ? 'col-sm-6' : 'col-sm-2'">
+            <div class="box-input">
+                <mat-select [(value)]="configuration.comparador">
+                    <mat-option *ngFor="let item of default.comparador[type]" [value]="item">{{item}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="col-sm-4" *ngIf="configuration.comparador != 'vacio'">
+            <div class="box-input" *ngIf="type == 'boolean'" >
+                <mat-select  [(value)]="configuration.default">
+                    <mat-option [value]="1">Si</mat-option>
+                    <mat-option [value]="0">No</mat-option>
+                </mat-select>
+            </div>
+
+            <div *ngIf="type == 'date'" class='box-input-date'>
+                <input [matDatepicker]="picker" [(ngModel)]="configuration.default" placeholder="Inicio de actividades" pattern="\d{1,2}/\d{1,2}/\d{4}" (focus)="picker.open()">   
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>   
+            </div>      
+            <mat-datepicker  #picker></mat-datepicker>
+
+            <input class='input' *ngIf="type == 'text'" [(ngModel)]="configuration.default" placeholder="Valor predeterminado" type="text">
+
+            <input class='input' *ngIf="type == 'number'" [(ngModel)]="configuration.default" placeholder="Valor predeterminado" type="number">
+        </div>
+        <div class="col-sm-2">
+            <button mat-raised-button color="primary" class='m-default btn-height-input w-100' (click)="addConfig()">+</button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 table-filter mat-elevation-z8 animated fadeIn mt-5 mb-5">
+            <div class="row text-filter" *ngFor="let item of oFilter.configuration;let i = index">
+                <div class="col-sm-5">{{ item.columna | rename }}</div>
+                
+                <div *ngIf="item.comparador != 'vacio'" class="col-sm-1 text-center">{{ item.comparador }}</div>
+                <div *ngIf="item.comparador != 'vacio'" class="col-sm-5">{{ item.columna | rename: item.default }}</div>
+
+                <div *ngIf="item.comparador == 'vacio'" class="col-sm-6">vacio</div>
+
+                <div class="col-sm-1">
+                    <button mat-raised-button color="primary" class='m-default' (click)="removeConfig(i)"><mat-icon>delete</mat-icon></button>
+                </div>
+            </div>
+            <div class="row msjNone" *ngIf="oFilter.configuration == null || oFilter.configuration.length == 0" >
+                <p>No se an creado ningun filtro</p>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -11,5 +11,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  scrollToElement(element:HTMLElement) {
+    element.scrollIntoView();
+  }
 }

@@ -1,9 +1,22 @@
 <app-nav-bar></app-nav-bar>
-<div id='map' style="height: 300px;" >
+<div id='map' class="animated fadeIn" #map style="height: 300px;" >
 </div>
-<div class="container">
+<div class="container animated fadeIn" *ngIf="bDone">
     <div class="row">
         <h1>Enprendimintos</h1>
+    </div>
+    <div class="row mb-3">
+        <div class="col-sm-10">
+            <div class="box-input">
+                <mat-select value="none">
+                    <mat-option value="none" (click)="loder(null)" >Todas</mat-option>
+                    <mat-option *ngFor="let item of lFilter" value='{{item.id}}' (click)="loder(item)">{{item.name}}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <button mat-raised-button color="primary" class='m-default btn-height-input w-100' (click)="customisar()">Configurar</button>
+        </div>
     </div>
     <div class="row">
         <table class="w-100 mat-elevation-z8">
@@ -17,22 +30,22 @@
                 <th></th>
                 <th>Nombre</th>
                 <th>RUT/TUC</th>
-                <th></th>
+                <th>Acciones</th>
             </tr>
-            <tr *ngFor="let item of dataSource" (click)="toDraft(item)" [class.pendinte]='item.status == 0' [class.rechasada]='item.status == 2'>
-                <td>
-                    <mat-icon matTooltip="{{ item.rut || item.rut == '' ? 'Empresa' : 'Proyecto' }}" >{{ item.rut || item.rut == '' ? 'work_outline' : 'work' }}</mat-icon>
+            <tr *ngFor="let item of dataSource" [class.pendinte]='item.status == 0' [class.rechasada]='item.status == 2'>
+                <td (click)="toDraft(item,map)" class='cursor-pointer color' >
+                    <mat-icon class="color" matTooltip="{{ item.rut || item.rut == '' ? 'Empresa' : 'Proyecto' }}" >{{ item.rut || item.rut == '' ? 'work' : 'work_outline' }}</mat-icon>
                 </td>
-                <td>{{item.name}}</td>
-                <td>{{item.rut}}</td>
+                <td (click)="toDraft(item,map)" class='cursor-pointer color' >{{item.title}}</td>
+                <td (click)="toDraft(item,map)" class='cursor-pointer color' >{{item.rut}}</td>
                 <td class='text-right'>
-                    <button matTooltip='Validar' *ngIf="item.status == 0" mat-icon-button>
-                        <mat-icon>error_outline</mat-icon>
+                    <button matTooltip='Validar' (click)="changeStateCompany(item)" mat-icon-button>
+                        <mat-icon>gavel</mat-icon>
                     </button>
-                    <button matTooltip='Editar' mat-icon-button>
+                    <button matTooltip='Editar' mat-icon-button (click)="edit(item.id)">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button matTooltip='Eliminar' mat-icon-button>
+                    <button matTooltip='Eliminar' mat-icon-button (click)="delete(item.id)">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>
@@ -42,4 +55,15 @@
     </div>
         
 </div>
+
+<div class='loading' *ngIf="!bDone">
+    <mat-progress-spinner
+        color="primary"
+        mode="indeterminate"
+    ></mat-progress-spinner>
+</div>
+
+
+
+
 <app-footer></app-footer>

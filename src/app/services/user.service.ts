@@ -10,42 +10,49 @@ import { userSession } from '../models/userSession';
 })
 export class UserService {
 
-  prefigo = "";
+  prefigo = "User";
 
   constructor(
     private httpClient: HttpClient
   ) { }
   
   getId() {
-    return '0';
+    let user = localStorage.getItem('SessionUser');
+    try {
+      if (user) user = JSON.parse(user);
+      return user['id'];
+    } catch (error) {
+      return false;
+    }
   }
 
   register(data){
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo + "/add", data , this.getheaders()).pipe(
+    return this.httpClient.post(environment.URLAPI + this.prefigo, data , this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
   login(email, pass){ 
-    return this.httpClient.post<userSession>(environment.URLAPI + this.prefigo + "/login", {'user' : email, 'pass' : pass} ).pipe(
+    let data = {'user' : email, 'pass' : pass};
+    return this.httpClient.post(environment.URLAPI + "Auth", data, this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
   logout(){
-    localStorage.removeItem('user');
+    localStorage.removeItem('SessionUser');
   }
 
   getAdmin() {
-    let user = localStorage.getItem('user');
+    let user = localStorage.getItem('SessionUser');
     try {
       if (user) user = JSON.parse(user);
-      return user['admin'];
+      return user['admin'] == '1';
     } catch (error) {
       return false;
     }
   }
   isLogeado() {
-    let user = localStorage.getItem('user');
+    let user = localStorage.getItem('SessionUser');
     try {
       if (user) user = JSON.parse(user);
       return user['remember_token'] != '';
@@ -55,7 +62,7 @@ export class UserService {
   }
 
   getUser(){
-    let user = localStorage.getItem('user');
+    let user = localStorage.getItem('SessionUser');
     try {
       if (user) {
         return JSON.parse(user);
@@ -71,20 +78,28 @@ export class UserService {
    * Genera el headers de los riquest
    */
   getheaders(){
+    let Token = this.getToken();
+    
+    if (Token == '') {
+      return {
+        headers: new HttpHeaders({
+            'Authorization': Token
+        })
+      };
+    } else {
+      
     return {
-      headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer '+this.getToken()
-      })
+      headers: new HttpHeaders({})
     };
+    }
   }
   /**
   * Devuleve el token en caso de tener un usuario logueado(almacenado en local storage)
   */
   private getToken() {
-    if (localStorage.getItem("SessionSeguros") && localStorage.getItem("SessionSeguros") != '') {
-        let Session = JSON.parse(localStorage.getItem("SessionSeguros"));
-        return Session.token;
+    if (localStorage.getItem("SessionUser") && localStorage.getItem("SessionUser") != '') {
+        let Session = JSON.parse(localStorage.getItem("SessionUser"));
+        if (Session != null) return Session.remember_token;
     }
     return '';
   }

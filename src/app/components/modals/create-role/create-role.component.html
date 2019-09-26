@@ -1,0 +1,55 @@
+<div class="col-12">
+    <h3 class='text-center'>{{ data.id ? 'Nuevo' : 'Editar' }} puesto</h3>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <input class='input' [(ngModel)]="data.name" placeholder="Nombre" type="text">
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <div class="row">
+            <div class="col-12">
+                <div class='box-input-date'>
+                    <input [matDatepicker]="pickerEnd" [(ngModel)]="data.start" placeholder="Caducado" type="text">   
+                    <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>   
+                </div>      
+                <mat-datepicker #pickerEnd></mat-datepicker>
+            </div>
+            <div class="col-12">
+                <div class='box-input-date'>
+                    <input [matDatepicker]="pickerStart" [(ngModel)]="data.start" placeholder="Inicio de valides" type="text">   
+                    <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>   
+                </div>      
+                <mat-datepicker #pickerStart></mat-datepicker>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="row">
+            <div class="col-12">
+                <mat-checkbox [(ngModel)]="data.edit_info">Editar proyecto</mat-checkbox>
+            </div>
+            <div class="col-12">
+                <mat-checkbox [(ngModel)]="data.delete_company">Eliminar proyecto</mat-checkbox>
+            </div>
+            <div class="col-12">
+                <mat-checkbox [(ngModel)]="data.remove_user">Eliminar usuario</mat-checkbox>
+            </div>
+            <div class="col-12">
+                <mat-checkbox [(ngModel)]="data.add_user">Ver llaves</mat-checkbox>
+            </div>
+            <div class="col-12">
+                <mat-checkbox [(ngModel)]="data.edit_role">Editar role</mat-checkbox>
+            </div>
+            <div class="col-12">
+                <mat-checkbox [(ngModel)]="data.see_role">Ver role</mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class='options text-center'>
+        <button class='m-1' mat-stroked-button (click)="exit(false)" >Cancelar</button>
+        <button class='m-1' mat-raised-button (click)="exit(true)" color="primary" >Eliminar</button>
+    </div>
+</div>

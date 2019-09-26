@@ -13,62 +13,13 @@ export class SectionNewsComponent implements OnInit {
   @Input() title: String = ''; // Titulo
   @Input() btnNext: String = 'sdsdsd'; // btn siguiente
   @Input() btnPrev: String = 'sdsdsd'; // btn anterior
-  @Input() data:any[] = [
-    {
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    },{
-      title: 'titulo 1',
-      date: new Date(),
-      id: 0
-    }
-  ];
+  @Input() admin: Boolean = false;
+  
+  @Input() data:any[] = [];
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   filter() {
     if (this.linkMore != '') return this.data.slice(0,4);

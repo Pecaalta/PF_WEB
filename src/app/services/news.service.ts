@@ -10,7 +10,7 @@ import { news } from '../models/news';
 })
 export class NewsService {
 
-  prefigo:string = "api/Noticias";
+  prefigo:string = "news";
 
   constructor(
     private httpClient: HttpClient
@@ -22,26 +22,20 @@ export class NewsService {
     )
   }
 
-  get_active(){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/activas", this.getheaders() ).pipe(
-        catchError(this.handleError)
-    )
-  }
-
   post(data:news){    
-    return this.httpClient.post<any>(environment.URLAPI + this.prefigo, data, this.getheaders()  ).pipe(
+    return this.httpClient.post(environment.URLAPI + this.prefigo, data, this.getheaders()).pipe(
         catchError(this.handleError)
     )
   }
 
   get(id:string){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "/" + id).pipe(
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "?id=" + id).pipe(
         catchError(this.handleError)
     )
   }
 
   put(noticia:news){
-    return this.httpClient.put<any>(environment.URLAPI + this.prefigo + "/" + noticia.id,noticia, this.getheaders() ).pipe(
+    return this.httpClient.put(environment.URLAPI + this.prefigo ,noticia, this.getheaders() ).pipe(
         catchError(this.handleError)
     )
   }
@@ -54,18 +48,32 @@ export class NewsService {
 
 
 
+  /**
+   * Genera el headers de los riquest
+   */
   getheaders(){
-    return {
-      headers: new HttpHeaders({
+    let Token = this.getToken();
+    if (Token != '') {
+      return {
+        headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'Authorization': this.getToken()
-      })
-    };
+          'Authorization': Token
+        })
+      };
+    } else {
+        
+      return {
+        headers: new HttpHeaders({})
+      };
+    }
   }
+  /**
+  * Devuleve el token en caso de tener un usuario logueado(almacenado en local storage)
+  */
   private getToken() {
-    if (localStorage.getItem("user") && localStorage.getItem("user") != '') {
-        let Session = JSON.parse(localStorage.getItem("user"));
-        return Session.remember_token;
+    if (localStorage.getItem("SessionUser") && localStorage.getItem("SessionUser") != '') {
+        let Session = JSON.parse(localStorage.getItem("SessionUser"));
+        if (Session != null) return Session.remember_token;
     }
     return '';
   }

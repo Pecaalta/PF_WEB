@@ -1,0 +1,21 @@
+<div class="row">
+        <div class="col-12">
+                <H1 *ngIf="data.title != null && data.title != ''">{{data.title}}</H1>
+            
+        </div>
+        <div class="col-12">
+                <H2 *ngIf="data.subtitle != null && data.subtitle != ''">{{data.subtitle}}</H2>
+            
+        </div>
+        <div class="col-12">
+                <p *ngIf="data.text != null && data.text != ''">{{data.text}}</p>
+            
+        </div>
+</div>
+<div *ngIf="data.options != null && data.options == true" class='options text-center'>
+    <button class='m-1' mat-stroked-button (click)="exit(false)" >Cancelar</button>
+    <button class='m-1' mat-raised-button (click)="exit(true)" color="primary" >OK</button>
+</div>
+<div *ngIf="data.options == null || data.options != true" class='options text-center'>
+    <button class='m-1' mat-raised-button (click)="exit(true)" color="primary" >OK</button>
+</div>

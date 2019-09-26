@@ -1,0 +1,201 @@
+<app-nav-bar></app-nav-bar>
+
+<section class="animated fadeIn">
+    <div class="container">
+        <div class='row'>
+            <div class="col-12 ">
+                <h1 class='mt-5'>
+                        <mat-icon>{{ nDraft.rut || nDraft.rut == '' ? 'work' : 'work_outline' }}</mat-icon><br>
+                        {{ nDraft.title }} <br>
+                        <span>{{ nDraft.status == 0  ? 'Pendinte de aprovacion' : nDraft.status == 1 ? 'Aprovado' : 'Rechasado' }}</span>
+                    </h1>
+                <div class="mb-5 btn_box" >
+                    <button *ngIf="myKey.edit_info"         mat-stroked-button color="primary" [routerLink]="'/user/draft/edit/'+nDraft.id"  >Editar</button>
+                    <button *ngIf="myKey.delete_company"    mat-stroked-button color="warn" (click)="delete()" >Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="animated fadeIn">
+    <div class="container">
+        <div class='row'>
+            <div class="col-12 col-md-6 offset-md-6 vertical-center">
+                <ul class="data-proyect">
+                    <li><span>RUT</span> {{ nDraft.rut }} </li>
+                    <li><span>Empleados</span> {{ nDraft.personal }} </li>
+                    <li><span>BPS</span> {{ nDraft.bps }} </li>
+                    <li><span>FUNCIONA</span> {{ nDraft.dateStart | printDateString }} </li>
+                    <li *ngIf="apoyo != ''"><span>APOYAO</span> {{ apoyo }} </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="animated fadeIn">
+    <div class="container">
+        <div class='row'>
+            <div class="col-12 mt-5">
+                <h3 class='text-left'>Descripcion</h3>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-12 col-md-8 mb-5">
+                <p class='text-left'>
+                    {{ nDraft.description }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="animated fadeIn">
+    <div class="container">
+        <div class='row'>
+            <div class="col-12 mt-5">
+                <h3 class='text-right'>Deudas</h3>
+            </div>
+            <div class="col-12 offset-md-4 col-md-8 mb-5">
+                <p class='text-right'>
+                    {{ nDraft.debts }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="animated fadeIn">
+    <div class="container">
+        <div class='row'>
+            <div class="col-12">
+                <h3>ROLES</h3>
+                <button *ngIf="myKey.add_user" mat-stroked-button color="primary" class="center" (click)="createRole()" >Agregar puesto</button>
+            </div>
+        </div>
+        <div class='row d-flex justify-content-center'>
+            <div *ngFor="let key of keys" class="col-12 col-md-6 col-lg-4">
+                <div class="card-key">
+                    <h4 class='name'>{{ key.name }}</h4>
+                    <ul>
+                        <li>Editar proyecto <i class="material-icons">{{ key.edit_info ? 'check' : 'clear' }}</i></li>
+                        <li>Eliminar proyecto <i class="material-icons">{{ key.delete_company ? 'check' : 'clear' }}</i></li>
+                        <li>Eliminar usuario <i class="material-icons">{{ key.remove_user ? 'check' : 'clear' }}</i></li>
+                        <li>Ver llaves <i class="material-icons">{{ key.remove_user ? 'check' : 'clear' }}</i></li>
+                        <li>Editar role <i class="material-icons">{{ key.edit_role ? 'check' : 'clear' }}</i></li>
+                        <li>Ver role <i class="material-icons">{{ key.edit_role ? 'check' : 'clear' }}</i></li>
+                    </ul>
+                    <span class='key' (click)="copyKey(key.key_add)">{{ key.key_add }}</span> 
+                    <h5 *ngIf="valides(key) != ''">Valides<span> {{ valides(key) }} </span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="animated fadeIn">
+    <div class="container">
+        <div class='row'>
+            <div class="col-12">
+                <h3>Usuario</h3>
+            </div>
+        </div>
+        <div class='row d-flex justify-content-center'>
+            <div *ngFor="let user of users" class="col-6 col-md-4 col-lg-3">
+                <div class="card-user">
+                    <figure class="avatar">
+                        <img [src]="sUrlApi + '/' + user.url_img_table_user" alt="">
+                    </figure>
+                    <h5 class='role'>{{ user.name }}</h5>
+                    <h4 class='name'>{{ user.name_table_user }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="animated fadeIn">
+    <div class="container">
+        <div class='row'>
+            <div class="col-12">
+                <h3>ODS</h3>
+            </div>
+        </div>
+        <div class='row d-flex justify-content-center'>
+            <div class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/01.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[1]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/02.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[2]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/03.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[3]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/04.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[4]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/05.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[5]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/06.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[6]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/07.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[7]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/08.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[8]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/09.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[9]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/10.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[10]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/11.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[11]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/12.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[12]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/13.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[13]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/14.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[14]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/15.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[15]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/16.png" ></div>
+            </div>
+            <div  *ngIf='nDraft.ods[16]' class="col-6 col-xs-6 col-sm-4 col-md-2">
+                <div class="card_ODS"><img src="/assets/ods/17.png" ></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="box-map animated fadeIn">
+        <div class="container">
+            <div class='row'>
+                <div class="col-12">
+                    <h3 class='text-center'>Contacto</h3>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div style="height: 300px;">
+                            <div id='map' style="height: 300px;"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 vertical-center" style="height: auto;">
+                    <ul class="data-proyect">
+                        <li><span>Telefono</span> {{ nDraft.phone }} </li>
+                        <li><span>Direccion</span> {{ nDraft.addres }} </li>
+                        <li><span>Email</span> {{ nDraft.email }} </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>

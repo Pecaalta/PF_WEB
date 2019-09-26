@@ -1,4 +1,4 @@
-<header>
+<header (click)='pasc()'>
     <nav class="social d-none d-sm-none d-md-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -10,10 +10,10 @@
             </div>
         </div>
     </nav>
-    <nav class="options container navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="options container navbar navbar-expand-lg navbar-light">
         <div class="navbar-text d-block d-sm-block d-md-block d-lg-none" *ngIf='user'>
             <figure matRipple class="avatar"  [matMenuTriggerFor]="menu">
-                <img  src="https://cdn.pixabay.com/photo/2015/04/20/13/45/wool-731515_960_720.jpg" alt="" srcset="">
+                <img  [src]=" url + '/' + user.url_img" alt="" srcset="">
             </figure>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item>Perfil</button>
@@ -33,7 +33,7 @@
             <span class="navbar-text  d-none d-sm-none d-md-none d-lg-block">
                 <div *ngIf='user'>
                     <figure matRipple class="avatar"  [matMenuTriggerFor]="menu">
-                        <img  src="https://cdn.pixabay.com/photo/2015/04/20/13/45/wool-731515_960_720.jpg" alt="" srcset="">
+                        <img  [src]=" url + '/' + user.url_img" alt="" srcset="">
                     </figure>
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item>Perfil</button>

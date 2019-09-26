@@ -1,10 +1,12 @@
-<div class="box-login">
-    <div class='box'>
-        <h1 class='text-center'>Login</h1>
+<div class="box-login animated fadeIn">
+    <div class='box animated fadeIn delay-1s text-center'>
+        <div>
+        <img class='logo' src="/assets/logo.png" alt="Logo ">
         <input class='input' [(ngModel)]="email" (keyup.enter)="login()" placeholder="Usuario" type="text">
         <input class='input' [(ngModel)]="pass" (keyup.enter)="login()" placeholder="Contraseña" type="password">
         <br>
         <button mat-raised-button color="primary" (click)="login()" [disabled]=" email == '' || pass == '' " >Entrar</button>
+        <button class="registro" mat-button routerLink="/registry" >No tengo cuenta</button>
+        </div>
     </div>
-    <button class="registro" mat-button routerLink="/registry" >No tengo cuenta</button>
 </div>

@@ -1,0 +1,50 @@
+::ng-deep { 
+    .angular-editor-toolbar .angular-editor-toolbar-set {
+        border: none!important;
+        padding: .5rem!important;
+    }
+    .angular-editor-toolbar {
+        border: none!important;
+        border-bottom: solid 3px #06c !important;
+        background-color: #ffff!important;
+        box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16)!important;
+    }
+    .angular-editor-textarea {
+        border: none!important;
+    }
+    .ae-picker-item {
+        padding: .5rem!important;
+        border-radius: 4px!important;
+    }
+    .ae-picker-item:hover {
+        background-color: rgba(0,0,0,.02)!important;
+    }
+    .ae-picker-item.selected {
+        color: #fff!important;
+        background-color: #06c!important;
+    }
+    .angular-editor-button.active {
+        background: #fff5b9!important;
+    }
+
+    
+    .angular-editor-toolbar-set {
+        height: auto!important;
+    }
+    .ae-font.ae-expanded .ae-picker-options {
+        border: none!important;
+        border-radius: 7px!important;
+        overflow: hidden!important;
+        padding: .2rem!important;
+    }
+    
+    .box {
+        overflow: hidden;
+        border-radius: 7px;
+        box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
+    }
+}
+.textarea {
+    height: 140px;
+    resize: none;
+}

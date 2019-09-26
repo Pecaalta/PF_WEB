@@ -1,14 +1,18 @@
 
 <section [style.background]="color">
+<!--
     <div *ngIf="title && (!linkMore || data.length < 5)" class="container">
         <div class="row">
             <h1>{{ title }}</h1>
         </div>
     </div>
+-->
     <div *ngIf="title && linkMore && data.length > 5" class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6 text-center text-md-left">
+<!--
                 <h2>{{ title }}</h2>
+-->
             </div>
             <div class="col-sm-12 col-md-6 text-center text-md-right">
                 <button mat-button>MostrarMas</button>
@@ -24,25 +28,25 @@
             <div *ngIf='capital && data.length > 5' class="col-sm-12 col-md-6">
                 <div class="row">
                     <div class="col-12">
-                        <app-card-new [title]="data[0].title" [capital]='true' [date]='data[0].date'></app-card-new>
+                        <app-card-new [admin]='admin' [description]='data[0].description' [title]="data[0].title" [img]="data[0].url_img" [capital]='true' [id]='data[0].id' [date]='data[0].created_at'></app-card-new>
                     </div>
                 </div>
             </div>
-            <div *ngIf='capital' class="col-sm-12 col-md-6">
+            <div *ngIf='capital && data.length > 5' class="col-sm-12 col-md-6">
                 <div class="row mb-30">
                     <div class="col-sm-12 col-md-6">
-                        <app-card-new [title]="data[1].title" [date]='data[1].date'></app-card-new>
+                        <app-card-new [admin]='admin' [description]='data[1].description' [title]="data[1].title" [img]="data[1].url_img" [id]='data[1].id' [date]='data[1].created_at'></app-card-new>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <app-card-new [title]="data[2].title" [date]='data[2].date'></app-card-new>
+                        <app-card-new [admin]='admin' [description]='data[2].description' [title]="data[2].title" [img]="data[2].url_img" [id]='data[2].id' [date]='data[2].created_at'></app-card-new>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
-                        <app-card-new [title]="data[3].title" [date]='data[3].date'></app-card-new>
+                        <app-card-new [admin]='admin' [description]='data[3].description' [title]="data[3].title" [img]="data[3].url_img" [id]='data[3].id' [date]='data[3].created_at'></app-card-new>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <app-card-new [title]="data[4].title" [date]='data[4].date'></app-card-new>
+                        <app-card-new [admin]='admin' [description]='data[4].description' [title]="data[4].title" [img]="data[4].url_img" [id]='data[4].id' [date]='data[4].created_at'></app-card-new>
                     </div>
                 </div>
             </div>
@@ -51,7 +55,7 @@
             <div *ngIf='!capital || data.length < 5' class="col-sm-12">
                 <div class="row mb-30">
                     <div *ngFor='let card of filter()' class="col-sm-12 col-md-3">
-                        <app-card-new [title]="card.title" [date]='card.date'></app-card-new>
+                        <app-card-new [admin]='admin' [description]='card.description' [title]="card.title" [img]="card.url_img" [id]='card.id' [date]='card.created_at'></app-card-new>
                     </div>
                 </div>
             </div>

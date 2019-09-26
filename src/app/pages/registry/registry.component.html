@@ -1,12 +1,48 @@
-<div class="box-login">
-    <div class='box'>
+<div class="box-login animated fadeIn" [style.background-image]="bg">
+    <div class='box animated fadeIn delay-1s'>
         <h1 class='text-center'>Registro</h1>
-        <input class='input' [(ngModel)]="email" (keyup.enter)="login()" placeholder="Usuario" type="text">
-        <input class='input' [(ngModel)]="name" (keyup.enter)="login()" placeholder="Nombre" type="text">
-        <input class='input' [(ngModel)]="pass" (keyup.enter)="login()" placeholder="Contraseña" type="password">
-        
-        <input class='input' [(ngModel)]="repass" (keyup.enter)="login()" placeholder="Repetir contraseña" type="password">
-        <br>
-        <button mat-raised-button color="primary" (click)="login()" [disabled]=" email == '' || pass == '' " >Entrar</button>
+        <div class="row">
+            <div class="col-12 offset-md-3 col-md-6 mb-3">
+                <div class="drog-file avatar">
+                    <input name='file' #file type="file" accept='image/*' (change)="preview(file.files)">
+                    <div class='content'>
+                        <figure *ngIf="imagePath">
+                            <img [src]="imagePath">
+                        </figure>
+                        <mat-icon *ngIf="!imagePath">
+                            add_photo_alternate
+                        </mat-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <input class='input' [(ngModel)]="user.email" (keyup.enter)="login()" placeholder="Usuario" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <input class='input' [(ngModel)]="user.name" (keyup.enter)="login()" placeholder="Nombre" type="text">
+            </div>
+            <div class="col-12 col-md-4">
+                <input class='input' [(ngModel)]="user.age" (keyup.enter)="login()" placeholder="Edad" type="text">
+            </div>
+            <div class="col-12 col-md-4">
+                <input class='input' [(ngModel)]="user.CI" (keyup.enter)="login()" placeholder="C.I." type="text">
+            </div>
+            <div class="col-12 col-md-4">
+                <input class='input' [(ngModel)]="user.phone" (keyup.enter)="login()" placeholder="Telefono" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <input class='input' [(ngModel)]="user.password" (keyup.enter)="login()" placeholder="Contraseña" type="password">
+            </div>
+            <div class="col-12 col-md-6">
+                <input class='input' [(ngModel)]="user.repass" (keyup.enter)="login()" placeholder="Repetir contraseña" type="password">
+            </div>
+            <div class="col-12 col-md-3">
+                    <button mat-raised-button color="primary" (click)="login()" [disabled]=" user.email == '' || user.password == '' " >Crear Cuenta</button>
+            </div>
+            <div class="col-12 col-md-3 offset-md-6">
+                    <button class="registro" mat-button routerLink="/login" >Ya tengo una cuenta</button>
+                </div>
+
+        </div>
     </div>
 </div>

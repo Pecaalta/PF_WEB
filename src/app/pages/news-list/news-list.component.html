@@ -1,3 +1,18 @@
 <app-nav-bar></app-nav-bar>
-<app-section-news [btnNext]="'ss'" [btnNext]="'ss'" ></app-section-news>
+<div class="container animated fadeIn">
+    <div class="row">
+        <button *ngIf="admin" class='m-1 ml-auto mb-0 mr-3 mt-5' routerLink='/admin/news/create' mat-raised-button color="primary" >
+            Create
+        </button>
+    </div>
+</div>
+<app-section-news *ngIf="bDone" [admin]='admin' [data]='lNews' [btnNext]="'ss'" [btnNext]="'ss'" ></app-section-news>
+
+<div class='loading' *ngIf="!bDone">
+    <mat-progress-spinner
+        color="primary"
+        mode="indeterminate"
+    ></mat-progress-spinner>
+</div>
+
 <app-footer></app-footer>

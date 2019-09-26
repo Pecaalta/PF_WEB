@@ -1,0 +1,66 @@
+<h4 class='text-center mb-3'>Configuracion</h4>
+<div class="row">
+    <div class="col-12">
+        <button matTooltip='Ayuda' mat-icon-button (click)="info(0)">
+            <mat-icon>info</mat-icon>
+        </button>
+        <mat-checkbox labelPosition="after" [(ngModel)]="data.barChartLegend">Mostrar leyenda</mat-checkbox>
+    </div>
+    <div class="col-12">
+        <button matTooltip='Ayuda' mat-icon-button (click)="info(1)">
+            <mat-icon>info</mat-icon>
+        </button>
+        <mat-checkbox labelPosition="after" [(ngModel)]="data.ComparacionGlobal">Comparar global</mat-checkbox>
+    </div>
+    <div class="col-sm-12">
+        <button matTooltip='Ayuda' mat-icon-button (click)="info(2)">
+            <mat-icon>info</mat-icon>
+        </button>
+        <label id="radio-group-label">Columnas</label>
+    </div>
+    <div class="col-6">
+        <button class='m-1 w-100' mat-raised-button color="primary" (click)='marker(1)' >Todo</button>
+    </div>
+    <div class="col-6">
+        <button class='m-1 w-100' mat-raised-button color="primary" (click)='marker(0)' >Ninguno</button>
+    </div>
+    <div class="col-sm-12">
+        <div class="box-input">
+            <mat-checkbox class="w-100" *ngFor="let item of data.displayedColumns" (click)='marker(2,item.hide)' labelPosition="after" [(ngModel)]="item.hide">{{ item.name | rename }}</mat-checkbox>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <button matTooltip='Ayuda' mat-icon-button (click)="info(3)">
+            <mat-icon>info</mat-icon>
+        </button>
+        <label id="radio-group-label">Tipo de grafica</label>
+        <div class="box-input">
+            <mat-select [(value)]="data.barChartType">
+                <mat-option *ngFor="let item of data.ChartTypeSelect" value="{{ item }}">{{item | rename}}</mat-option>
+            </mat-select>
+        </div>
+        <button *ngIf='data.ComparacionGlobal' matTooltip='Ayuda' mat-icon-button (click)="info(4)">
+            <mat-icon>info</mat-icon>
+        </button>
+        <label *ngIf='data.ComparacionGlobal' id="radio-group-label">Compara columna</label>
+        <div *ngIf='data.ComparacionGlobal' class="box-input">
+            <mat-select [(value)]="data.ColumnaParaComparacionGlobal">
+                <mat-option *ngFor="let item of data.displayedColumns" value="{{ item.name }}">{{item.name | rename}}</mat-option>
+            </mat-select>
+        </div>
+
+        <button *ngIf='!data.ComparacionGlobal' matTooltip='Ayuda' mat-icon-button (click)="info(5)">
+            <mat-icon>info</mat-icon>
+        </button>
+        <label *ngIf='!data.ComparacionGlobal' id="radio-group-label">Identificador de cada enprendiminto</label>
+        <div *ngIf='!data.ComparacionGlobal' class="box-input">
+            <mat-select [(value)]="data.idComparacionEmprendiminto">
+                <mat-option *ngFor="let item of data.displayedColumns" value="{{ item.name }}">{{item.name | rename}}</mat-option>
+            </mat-select>
+        </div>    
+    </div>
+</div>
+<div class='options'>
+    <button class='m-1' mat-stroked-button (click)="exit(false)" >Cancelar</button>
+    <button class='m-1' mat-raised-button (click)="exit(true)" color="primary" >Guardar</button>
+</div>

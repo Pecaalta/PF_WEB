@@ -1,0 +1,12 @@
+
+<h4 class='text-center mb-3'>Cambiar de estado</h4>
+<div class="box-input">
+    <mat-select [(value)]="data.value">
+        <mat-option *ngFor="let item of options" value="{{ item.value }}">{{item.name}}</mat-option>
+    </mat-select>
+</div>
+    
+<div class='options'>
+    <button class='m-1' mat-stroked-button (click)="exit(false)" >Cancelar</button>
+    <button class='m-1' mat-raised-button (click)="exit(true)" color="primary" >Guardar</button>
+</div>

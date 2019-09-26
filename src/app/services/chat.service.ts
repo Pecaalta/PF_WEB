@@ -23,9 +23,19 @@ export class ChatService {
       return this.firestore.collection('users')
       .doc(id_User)
       .update({
-        chat: firestore.FieldValue.arrayUnion(data)
+        chat: firestore.FieldValue.arrayUnion(data),
+        hidde: false 
       });
     }
+
+    public ocultChat(id_User) {
+      return this.firestore.collection('users')
+      .doc(id_User)
+      .update({
+        hidde: true 
+      });
+    }
+
     //Crea un nuevo difusion
     public sendDifusion(data: difusion,id_User:string) {
       return this.firestore.collection("difusiones/"+id_User).add(data);
@@ -39,10 +49,6 @@ export class ChatService {
     public getChat(id){
       const chats = this.firestore.collection('users').doc(id)
       .snapshotChanges();
-//      const difucion = this.firestore.collection("difusiones", ref => {
- //       ref.where('filtro', 'array-contains', filter);
- //     }).valueChanges();
- //     return combineLatest(chats,difucion);
       return chats;
     }
 

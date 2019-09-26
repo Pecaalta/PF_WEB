@@ -1,11 +1,19 @@
-<div class='cardNews' matRipple [style.backgroundImage]="'url('+ img +')'">
-    <div class='content'>
-        <main>
+<div class='cardNews animated fadeInUp' matRipple  [style.backgroundImage]="'url('+ url + '/' + img +')'">
+    <div class='content' >
+        <main routerLink="{{ '/admin/news/' + id }}">
             <h1 [class.capital]='capital'>{{ title }}</h1>
-            <p [class.capital]='capital'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ipsa nisi rerum dolorum non minus quam ipsum libero, fugiat veniam praesentium saepe quae nam eum dicta impedit nobis, blanditiis minima?Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ipsa nisi rerum dolorum non minus quam ipsum libero, fugiat veniam praesentium saepe quae nam eum dicta impedit nobis, blanditiis minima?Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ipsa nisi rerum dolorum non minus quam ipsum libero, fugiat veniam praesentium saepe quae nam eum dicta impedit nobis, blanditiis minima?</p>
+            <p [class.capital]='capital'>{{  description }}</p>
         </main>
-        <footer>
+        <footer routerLink="{{ '/admin/news/' + id }}">
             <span >{{ date | printDateString }}</span>
         </footer>
+        <div *ngIf="admin" class="accion">
+            <button routerLink="{{ '/admin/news/' + id }}"  mat-icon-button >
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="delete(id)" >
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
     </div>
 </div>

@@ -1,28 +1,47 @@
 <app-nav-bar></app-nav-bar>
-<div class="banner mb-5"></div>
-<div class="container">
+<div class="banner mb-5 animated fadeIn"></div>
+<div class="container animated fadeIn">
     <div class="row">
         <div class="col-12">
             <h2>Nuevo proyecto</h2>
         </div>
-        <div class="col-sm-12 col-md-6">
-            <input class='input' [(ngModel)]="nDraft.name" placeholder="Nombre" type="text">
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="nDraft.title" placeholder="Nombre" type="text">
         </div>
         <div class="col-sm-12 col-md-6">
+            <input class='input' [(ngModel)]="nDraft.email" placeholder="Email" type="text">
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <input class='input' [(ngModel)]="nDraft.phone" placeholder="Telefono" type="text">
+        </div>
+        <div class="col-sm-12 col-md-4">
             <input class='input' [(ngModel)]="nDraft.rut" placeholder="RUT/RUC" type="text">
         </div>
+        <div class="col-sm-12 col-md-4">
+            <input class='input' [(ngModel)]="nDraft.bps" placeholder="BPS" type="text">
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class='box-input-date'>
+                <input [matDatepicker]="picker" [(ngModel)]="nDraft.dateStart" placeholder="Inicio de actividades" pattern="\d{1,2}/\d{1,2}/\d{4}" (focus)="picker.open()">   
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>   
+            </div>      
+            <mat-datepicker #picker></mat-datepicker>
+        </div>
         <div class="col-sm-12 col-md-8">
-            <textarea class='h-200 [(ngModel)]="nDraft.description"' placeholder="Descripcion del proyecto"></textarea>
+            <textarea class='h-200' [(ngModel)]="nDraft.description" placeholder="Descripcion del proyecto"></textarea>
         </div>
         <div class="col-sm-12 col-md-4">
             <div class="box-input h-200">
-                <mat-checkbox *ngFor="let oSector of nDraft.sector"  labelPosition="after">
+                <mat-checkbox *ngFor="let oSector of nDraft.sector" [(ngModel)]="oSector.status" labelPosition="after">
                   <figure class="img-sector">
-                    <img src="{{oSector.img }}" alt="" srcset="">
+                    <img src="{{ oSector.img }}" alt="" srcset="">
                   </figure>
                   <span class='text-sector'>{{ oSector.name }}</span>
                 </mat-checkbox>
             </div>
+        </div>
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="nDraft.addres" placeholder="Direccion" type="text">
         </div>
         <div class="col-12">
             <div class="box-map">
@@ -34,58 +53,58 @@
         <div class="col-12">
             <h3>ODS (OBJETIVO DE DESAROLLO SOSTENIBLES)</h3>
             <p>
-                    Los Objetivos de Desarrollo Sostenible (ODS), también conocidos como Objetivos Mundiales, son un llamado universal a la adopción de medidas para poner fin a la pobreza, proteger el planeta y garantizar que todas las personas gocen de paz y prosperidad.Toda empresa deve tener almenos 1
+                Los Objetivos de desarrollo sostenible son el plan maestro para conseguir un futuro sostenible para todos. Se interrelacionan entre sí e incorporan los desafíos globales a los que nos enfrentamos día a día, como la pobreza, la desigualdad, el clima, la degradación ambiental, la prosperidad, y la paz y la justicia. Para no dejar a nadie atrás, es importante que logremos cumplir cada uno de estos objetivos al 2030. Si desea conocer más <a href="https://www.un.org/sustainabledevelopment/es/sustainable-development-goals/">Web oficial</a>
             </p>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[0]' (click)="nDraft.ods[0] = !nDraft.ods[0]"><img src="/assets/ods/01.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[1]' (click)="nDraft.ods[1] = !nDraft.ods[1]"><img src="/assets/ods/02.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[2]' (click)="nDraft.ods[2] = !nDraft.ods[2]"><img src="/assets/ods/03.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[3]' (click)="nDraft.ods[3] = !nDraft.ods[3]"><img src="/assets/ods/04.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[4]' (click)="nDraft.ods[4] = !nDraft.ods[4]"><img src="/assets/ods/05.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[5]' (click)="nDraft.ods[5] = !nDraft.ods[5]"><img src="/assets/ods/06.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[6]' (click)="nDraft.ods[6] = !nDraft.ods[6]"><img src="/assets/ods/07.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[7]' (click)="nDraft.ods[7] = !nDraft.ods[7]"><img src="/assets/ods/08.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[8]' (click)="nDraft.ods[8] = !nDraft.ods[8]"><img src="/assets/ods/09.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[9]' (click)="nDraft.ods[9] = !nDraft.ods[9]"><img src="/assets/ods/10.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[10]' (click)="nDraft.ods[10] = !nDraft.ods[10]"><img src="/assets/ods/11.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[11]' (click)="nDraft.ods[11] = !nDraft.ods[11]"><img src="/assets/ods/12.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[12]' (click)="nDraft.ods[12] = !nDraft.ods[12]"><img src="/assets/ods/13.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[13]' (click)="nDraft.ods[13] = !nDraft.ods[13]"><img src="/assets/ods/14.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[14]' (click)="nDraft.ods[14] = !nDraft.ods[14]"><img src="/assets/ods/15.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[15]' (click)="nDraft.ods[15] = !nDraft.ods[15]"><img src="/assets/ods/16.png" ></div>
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-2">
+        <div class="col-6 col-xs-6 col-sm-4 col-md-2">
             <div class="card_ODS" [class.active]='nDraft.ods[16]' (click)="nDraft.ods[16] = !nDraft.ods[16]"><img src="/assets/ods/17.png" ></div>
         </div>
     </div>
@@ -96,21 +115,60 @@
                 Datos sensibles o opcionales es informacion que no nesesita dar, pues es pribada de la empresa o proyecto. Aunque puede ser util para planificar beneficios o eventos, esta es informacion que no es nesesaraia para registrar su enprendiminto.
             </p>
         </div>
-        <div class="col-sm-12 col-md-9">
+        <div class="col-sm-12">
             <textarea [(ngModel)]="nDraft.debts" placeholder="Deudas, prestamos he informaciones relebante" class='mt-0 h-400'></textarea>
         </div>
-        <div class="col-sm-12 col-md-3">
-            <label id="radio-group-label">Personal</label>
-            <mat-radio-group class="radio-group" [(ngModel)]="nDraft.personal">
-                <mat-radio-button value="1">Mono tributo</mat-radio-button>
-                <mat-radio-button value="5">Menos de 5</mat-radio-button>
-                <mat-radio-button value="10">Menos de 10</mat-radio-button>
-                <mat-radio-button value="50">Menos de 50</mat-radio-button>
-                <mat-radio-button value="100">Menos de 100</mat-radio-button>
-                <mat-radio-button value="-1">Mas de 100</mat-radio-button>
+        <div class="col-sm-6">
+            <label id="radio-group-label">Cual es el tamaño estimado de su proyecto</label>
+            <mat-radio-group class="radio-group box-input h-300" [(ngModel)]="nDraft.personal">
+                <mat-radio-button name="opList" value="1">Mono tributo</mat-radio-button>
+                <mat-radio-button name="opList" value="5">Menos de 5</mat-radio-button>
+                <mat-radio-button name="opList" value="10">Menos de 10</mat-radio-button>
+                <mat-radio-button name="opList" value="50">Menos de 50</mat-radio-button>
+                <mat-radio-button name="opList" value="100">Menos de 100</mat-radio-button>
+                <mat-radio-button name="opList" value="-1">Mas de 100</mat-radio-button>
             </mat-radio-group>
         </div>
+        <div class="col-sm-6">
+            <label id="radio-group-label">En algun momento as resibido alguna clase de apoyo financiero</label>
+            <div class="box-input h-300">
+                <mat-checkbox  labelPosition="after" [(ngModel)]="nDraft.apoyoANR">ANR</mat-checkbox>
+                <mat-checkbox  labelPosition="after" [(ngModel)]="nDraft.apoyoANII">ANII</mat-checkbox>
+                <mat-checkbox  labelPosition="after" [(ngModel)]="nDraft.apoyoGoviernoDepartamental">Gobierno departamental</mat-checkbox>
+                <mat-checkbox  labelPosition="after" [(ngModel)]="nDraft.apoyoOtro">Otro apoyo</mat-checkbox>
+            </div>
+        </div>
     </div>
+
+    <div class='row'>
+        <div class="col-12">
+            <h3>ROLES</h3>
+        </div>
+    </div>
+    <div class='row'>
+        <div *ngFor="let key of nDraft.role" class="col-12 col-md-6 col-lg-4">
+            <div class="card-key">
+                <h4 class='name'>{{ key.name }}</h4>
+                <ul>
+                    <li>Editar proyecto <i class="material-icons">{{ key.edit_info ? 'check' : 'clear' }}</i></li>
+                    <li>Eliminar proyecto <i class="material-icons">{{ key.delete_company ? 'check' : 'clear' }}</i></li>
+                    <li>Eliminar usuario <i class="material-icons">{{ key.remove_user ? 'check' : 'clear' }}</i></li>
+                    <li>Ver llaves <i class="material-icons">{{ key.remove_user ? 'check' : 'clear' }}</i></li>
+                    <li>Editar role <i class="material-icons">{{ key.edit_role ? 'check' : 'clear' }}</i></li>
+                    <li>Ver role <i class="material-icons">{{ key.edit_role ? 'check' : 'clear' }}</i></li>
+                </ul>
+                <span class='key' (click)="copyKey(key.key_add)">{{ key.key_add }}</span> 
+                <h5 *ngIf="valides(key) != ''">Valides<span> {{ valides(key) }} </span></h5>
+            </div>
+        </div>
+        <div *ngFor="let key of nDraft.role" class="col-12 col-md-6 col-lg-4 card-add-key">
+            <div class="icon_add" (click)="createRole()">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+
+    </div>
+
     <div class="row mt-5">
         <div class="col-12">
             <h3>Antes de continuar se le infroma, que le puede interesar</h3>
@@ -129,5 +187,4 @@
         </div>
     </div>
 </div>
-
 <app-footer></app-footer>

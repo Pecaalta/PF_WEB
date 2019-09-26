@@ -1,0 +1,13 @@
+<p>filter works!</p>
+<div *ngFor="let conf of data.configuration"  class="row">
+        <div class="col-12 col-md-6">
+           <p class='m-default btn-height-input etiquta'>{{ conf.columna + ' ' + conf.comparador }}</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <input class='input' [(ngModel)]="conf.default" type="text">
+        </div>
+</div>
+<div class='options text-center'>
+    <button class='m-1' mat-stroked-button (click)="exit(false)" >Cancelar</button>
+    <button class='m-1' mat-raised-button (click)="exit(true)" color="primary" >Ok</button>
+</div>

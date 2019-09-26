@@ -8,7 +8,8 @@ export class PrintDateStringPipe implements PipeTransform {
   transform(date: Date): any {
     if (date == null) return 'Error';
     var options = {  month: 'long', day: 'numeric' };
-    return date.toLocaleDateString("es-UY", options);
+    let d = new Date(date);
+    return d.toLocaleDateString("es-UY", options);
   }
 
 }

@@ -1,40 +1,33 @@
-<section class="container">
-    <div class="chatBox" [class.client]='!admin'>
-        <div class="chatUsers" *ngIf="admin">
-            <app-chat-user [isDiffusion]='true' [name]="'Nueva difusion'" (click)="newDifusion()"></app-chat-user>
-            <app-chat-user *ngFor="let user of listUser" [img]="user.img" [name]="user.name" (click)="getChat(user)"></app-chat-user>
+<div class="chatBox container" [class.client]='!admin || listUser.length == 0'>
+    <div class="chatUsers" *ngIf="admin && listUser.length > 0">
+        <app-chat-user *ngFor="let user of listUser" [img]="url + '/' + user.url_img" [name]="user.name" [id]="user.id" [check]="user.check" (click)="getChat(user)"></app-chat-user>
+    </div>
+    <main class="chatMessage">
+        <div class="notchat" *ngIf="hiddeChat || (!currentUser && admin)">
+            <h2>No hay chats seleccionado</h2>
         </div>
-        <main class="chatMessage">
-            <div class="notchat" *ngIf="!currentUser && admin">
-                    <mat-icon>how_to_reg</mat-icon>
-                <h2>No hay mas consultas</h2>
-            </div>
-            <div class='textBox' #msg_box id='msg_box' *ngIf="currentUser">
-                <app-chat-message *ngFor="let msg of currentUser.chat" [data]='msg' [admin]='admin'></app-chat-message>
-            </div>
-        </main>
-        <main class="chatFiltro" *ngIf='currentUser && FilterCurrent && FilterCurrent.filtro'>
-            <mat-chip-list>
+        <div class='textBox' #msg_box id='msg_box' [scrollTop]="msg_box.scrollHeight" *ngIf="currentUser">
+            <app-chat-message *ngFor="let msg of currentUser.chat;let i = index;" [separar]='i == (currentUser.chat.length - 1) || (i != currentUser.chat.length && currentUser.chat[i].recivido != currentUser.chat[i+1].recivido)' [data]='msg' [admin]='admin'></app-chat-message>
+        </div>
+    </main>
+    <main class="chatFiltro" *ngIf='!hiddeChat && currentUser && FilterCurrent && FilterCurrent.filtro'>
+        <mat-chip-list>
                 <mat-chip *ngFor='let fiter of FilterCurrent.filtro;let i = index;'>
                     {{ fiter.type }}
                     <mat-icon matChipRemove (click)="removeFilter(i)">clear</mat-icon>
                 </mat-chip>
-            </mat-chip-list>
-            <button mat-icon-button (click)="Filters()">
-                <mat-icon>edit</mat-icon>
-            </button>
-        </main>
-        <div class="chatText" *ngIf="currentUser || !admin">
-            <textarea [(ngModel)]="newMsgtext"></textarea>
-            <button mat-icon-button *ngIf='FilterCurrent != null && FilterCurrent.filtro' (click)="Filters()">
-                <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button >
-                <mat-icon>attach_file</mat-icon>
-            </button>
-            <button mat-icon-button (click)="send()">
-                <mat-icon>send</mat-icon>
-            </button>
-        </div>
+        </mat-chip-list>
+        <button mat-icon-button (click)="Filters()">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </main>
+    <div class="chatText" *ngIf="(currentUser && listUser.length > 0) || !admin">
+        <textarea [(ngModel)]="newMsgtext"></textarea>
+        <button mat-icon-button *ngIf='FilterCurrent != null && FilterCurrent.filtro' (click)="Filters()">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="send()">
+            <mat-icon>send</mat-icon>
+        </button>
     </div>
-</section>
+</div>

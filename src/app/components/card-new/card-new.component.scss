@@ -7,16 +7,21 @@
     border-radius: 3px;
     position: relative;
     background-position: center;
-    background-size: cover;
+    background-size: auto 100%;
     overflow: hidden;
     margin: 15px 0;
     transition: all .3s;
     cursor: pointer;
     &:hover {
+        //background-size: auto 110%;
         box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3), 
                     0px 0px 2px rgba(0, 0, 0, 0.12);
         .content {
             background: rgba(0, 0, 0, 0.8);
+        }
+        .accion {
+            top: 0;
+            opacity: 1;
         }
     }
     &::before {
@@ -40,7 +45,8 @@
             padding: 0 20px;
             z-index: 2;
             h1 {
-                font-size: 24px;
+                font-size: 18px;
+                line-height: 20px;
                 font-weight: 400;
                 text-align: left;
                 color: #FFFFFF;
@@ -48,7 +54,8 @@
                 font-weight: 400;
                 &.capital {
                     margin-top: 1rem;
-                    font-size: 3rem;
+                line-height: 2rem;
+                font-size: 2rem;
                     margin-bottom: 2rem;
                 }
             }
@@ -88,4 +95,12 @@
     .cardNews p {
         -webkit-line-clamp: 8!important;  
     }
+}
+
+.accion {
+    position: absolute;
+    right: 0;
+    top: -100px;
+    opacity: 0;
+    transition: all .2s;
 }

@@ -6,6 +6,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 * {
   letter-spacing: 0.04em;
 }
+.m-default {
+  margin: 15px 0!important;
+}
+.btn-height-input {
+  height: 52px!important;
+}
 .container {
     margin-right: auto;
     margin-left: auto;
@@ -28,7 +34,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   
   @media (min-width: 992px) {
     .container {
-      max-width: 960px;
+      max-width: 1200px;
     }
   }
   
@@ -37,8 +43,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       max-width: 1200px;
     }
   }
+
   h1 {
-      font-weight: bold;
+      font-family: 'Roboto Slab', serif;
+      font-weight: 900;
       font-size: 24px;
       line-height: 24px;
       text-align: center;
@@ -46,9 +54,165 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       margin: auto
   }
   h2 {
+    font-family: 'Roboto Slab', serif;
+      font-weight: 900;
       font-size: 24px;
       line-height: 28px;
       display: flex;
       align-items: center;
       color: #595959;
   }
+  .mat-radio-label,
+  .mat-radio-label-content,
+  .mat-checkbox-label {
+    white-space: normal;
+ }
+
+ .leaflet-popup-content-wrapper {
+     border-radius: 4px!important;
+ }
+ 
+ .leaflet-popup-content-wrapper,
+ .leaflet-popup-tip {
+     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0,0,0,.12)!important;
+ }
+ .leaflet-popup {
+     margin-bottom: 26px!important;
+ }
+
+.input,
+textarea,
+.box-input,
+.box-input-date {
+    background: #F4F4F4;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+    color: #595959;
+    border: none;
+    padding: 6px 12px;
+    width: 100%;
+    margin: 15px 0;
+    overflow: auto;
+}
+.mat-select {
+  padding: 8px 0px;
+}
+.box-input-date {
+    display: flex;
+    align-items: center;
+    background: #F4F4F4;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 6px;
+    color: #595959;
+    border: none;
+    padding: 0;
+    width: 100%;
+    margin: 15px 0;
+    overflow: auto;
+}
+.box-input-date input{
+    display: flex;
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 14px 12px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-left: 1px solid #f1f1f1;
+  width: 5px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.07);
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
+  transition: all .2s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.16);
+}
+
+
+
+.drog-file {
+  position: relative;
+  width: 100%;
+  height: 223px;
+  
+  overflow: hidden;
+  border-radius: 7px;
+  background: #F4F4F4;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
+  margin: 15px 0!important;
+
+  input {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+  }
+
+  .content {
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 0;
+      mat-icon {
+          font-size: 52px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 17px;
+          color: rgba(0, 0, 0, 0.5);
+          border: dashed 5px rgba(0, 0, 0, 0.05);
+      }
+      figure {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+              max-width: 100%;
+              max-height: 100%;
+
+              box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 
+              0px 0px 2px rgba(0, 0, 0, 0.12);
+          }
+      }
+  }
+}
+
+
+.loading {
+  display: block;
+  width: 100%;
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

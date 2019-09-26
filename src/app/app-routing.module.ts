@@ -18,31 +18,44 @@ import { Error404Component } from './pages/error404/error404.component';
 
 // Guard
 import { AuthGuard } from './guards/auth.guard';
+import { NewsCreateComponent } from './pages/news-create/news-create.component';
+import { NewsPublicListComponent } from './pages/news-public-list/news-public-list.component';
+import { DraftSeeComponent } from './pages/draft-see/draft-see.component';
+import { FilterCreateComponent } from './pages/filter-create/filter-create.component';
+import { FilterListComponent } from './pages/filter-list/filter-list.component';
 
 const routes: Routes = [
   // Visitante
-  { path: '', pathMatch:'full', redirectTo: '404' },
-  { path: 'home',             component: HomeComponent,           canActivate:[AuthGuard] },
-  { path: 'login',            component: LoginComponent,          canActivate:[AuthGuard] },
-  { path: 'registry',         component: RegistryComponent,       canActivate:[AuthGuard] },
-  { path: 'news',             component: NewsListComponent,       canActivate:[AuthGuard] },
-  { path: 'news/new',         component: RegistryComponent,       canActivate:[AuthGuard] },
-  { path: 'news/:id',         component: NewComponent,            canActivate:[AuthGuard] },
-  { path: 'legal',            component: DraftNewComponent,       canActivate:[AuthGuard] },
+  { path: '', pathMatch:'full', redirectTo: 'home' },
+  { path: 'home',                 component: HomeComponent,           },
+  { path: 'login',                component: LoginComponent,          canActivate:[AuthGuard] },
+  { path: 'registry',             component: RegistryComponent,       canActivate:[AuthGuard] },
+  { path: 'news',                 component: NewsPublicListComponent, canActivate:[AuthGuard] },
+  { path: 'news/new',             component: RegistryComponent,       canActivate:[AuthGuard] },
+  { path: 'news/:id',             component: NewComponent,            },
+  { path: 'legal',                component: DraftNewComponent,       canActivate:[AuthGuard] },
   // Emprendedor
-  { path: 'user/draft',       component: DraftListComponent,      canActivate:[AuthGuard] },
-  { path: 'user/draft/new',   component: DraftNewComponent,       canActivate:[AuthGuard] },
-  { path: 'user/draft/:id',   component: ProfileComponent,        canActivate:[AuthGuard] },
-  { path: 'user/chat',        component: ChatComponent,           canActivate:[AuthGuard] },
+  { path: 'user/draft',           component: DraftListComponent,      canActivate:[AuthGuard] },
+  { path: 'user/draft/new',       component: DraftNewComponent,       canActivate:[AuthGuard] },
+  { path: 'user/draft/edit/:id',  component: DraftNewComponent,       canActivate:[AuthGuard] },
+  { path: 'user/draft/:id',       component: DraftSeeComponent,       canActivate:[AuthGuard] },
+  { path: 'user/chat',            component: ChatComponent,           canActivate:[AuthGuard] },
   // Admin
-  { path: 'admin/draft',      component: DraftListAdminComponent, canActivate:[AuthGuard] },
-  { path: 'admin/chat',       component: ChatComponent,           canActivate:[AuthGuard] },
-  { path: 'admin/report',     component: ReportComponent,         canActivate:[AuthGuard] },
-  { path: 'admin/user/:id',   component: ProfileComponent,        canActivate:[AuthGuard] },
+  { path: 'admin/draft',          component: DraftListAdminComponent, canActivate:[AuthGuard] },
+  { path: 'admin/draft/:id',      component: DraftNewComponent, canActivate:[AuthGuard] },
+  { path: 'admin/chat',           component: ChatComponent,           canActivate:[AuthGuard] },
+  { path: 'admin/report',         component: ReportComponent,         canActivate:[AuthGuard] },
+  { path: 'admin/filters',        component: FilterListComponent,     canActivate:[AuthGuard] },
+  { path: 'admin/filters/:id',    component: FilterCreateComponent,   canActivate:[AuthGuard] },
+  { path: 'admin/filters/create', component: FilterCreateComponent,   canActivate:[AuthGuard] },
+  { path: 'admin/news',           component: NewsListComponent,       canActivate:[AuthGuard] },
+  { path: 'admin/news/:id',       component: NewsCreateComponent,     canActivate:[AuthGuard] },
+  { path: 'admin/news/create',    component: NewsCreateComponent,     canActivate:[AuthGuard] },
+  { path: 'admin/user/:id',       component: ProfileComponent,        canActivate:[AuthGuard] },
   // Errores
-  { path: '401',              component: Error401Component },
-  { path: '404',              component: Error404Component },
-  { path: '**',              component: Error404Component },
+  { path: '401',                  component: Error401Component },
+  { path: '404',                  component: Error404Component },
+  { path: '**',                   component: Error404Component },
 ];
 
 @NgModule({

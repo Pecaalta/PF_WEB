@@ -7,6 +7,7 @@ import { msg } from 'src/app/models/msg';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChatService } from 'src/app/services/chat.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-chat-box',
@@ -21,9 +22,11 @@ export class ChatBoxComponent implements OnInit {
   currentChat:msg[] = null;
   currentUser:any = null;
   admin:boolean = null;
-
+  hiddeChat:boolean = null;
+  
   newMsgtext:string =  '';
 
+  url:string = environment.URLAPI;
 
   serviceFirechat:any = null;
   constructor(
@@ -40,15 +43,28 @@ export class ChatBoxComponent implements OnInit {
         Snapshot.forEach((dataUser: any) => {
           let data = dataUser.payload.doc.data();
           data['id'] = dataUser.payload.doc.id;
-          this.listUser.push(data);
-        })
+          if ( data['hidde'] == null || data['hidde'] == false) {
+            data['check'] = data['chat'].pop().recivido;
+            this.listUser.push(data);
+          } else if (data['hidde'] == true && this.currentUser != null && this.currentUser['id'] == data['id']) {
+            this.currentUser = null;
+            this.serviceFirechat = null;
+            this.hiddeChat = true;
+          }
+        });
+        this.scrollToBottom();
       });
     } else {
-      this._fire.getChat(this._user.getId()).subscribe( (Snapshot) => {
-        this.currentUser = Snapshot.payload.data();
-        this.currentUser['id'] = this._user.getId();
-        this.scrollToBottom(); 
-      });
+      let id = this._user.getId();
+      if (id === false) {
+        this.msg('Se perdio la sesion');
+      }else {
+        this._fire.getChat(id).subscribe( (Snapshot) => {
+          this.currentUser = Snapshot.payload.data();
+          //this.currentUser['id'] = id;
+          this.scrollToBottom(); 
+        });
+      }
     }
   }
 
@@ -81,6 +97,7 @@ export class ChatBoxComponent implements OnInit {
   }
 
   getChat(user) {
+    this.hiddeChat = false;
     this.serviceFirechat = this._fire.getChat(user.id);
     this.serviceFirechat.subscribe( (Snapshot) => {
       this.currentUser = Snapshot.payload.data();
@@ -88,11 +105,14 @@ export class ChatBoxComponent implements OnInit {
       this.scrollToBottom(); 
     });
   }
-  @ViewChild('msg_box',{static: false}) private myScrollContainer: ElementRef;
+  @ViewChild('msg_box',{static: true}) private myScrollContainer: ElementRef;
   scrollToBottom(): void {
     try {
-        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      console.log(document.getElementById('msg_box'));
+       // this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
     } catch(err) {       
+      console.log(err);
+      
     }                 
   }
 

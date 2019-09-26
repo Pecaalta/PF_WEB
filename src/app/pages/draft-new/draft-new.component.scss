@@ -3,23 +3,17 @@
     height: 200px;
     background-image: url('/assets/bg_2.jpg');
     background-size: cover;
+    border-bottom: 1px solid #f1f1f1;
 }
-.input,textarea,.box-input {
-    background: #F4F4F4;
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
-    border-radius: 6px;
-    color: #595959;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    margin: 15px 0;
-}
+
+
 .box-map {
     background: #F4F4F4;
     box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.16);
     border-radius: 6px;
     overflow: hidden;
     padding: 4px;
+    margin: 15px 0;
     #map {
         border-radius: 6px;
         overflow: hidden;
@@ -53,7 +47,9 @@
 .h-400 {
     height: 400px;
 }
-
+.h-300 {
+    height: 300px;
+}
 h2 {
     display: block;
     font-size: 24px;
@@ -72,13 +68,16 @@ p {
     box-shadow: 0px 4px 8px rgba(47, 47, 47, 0.14);
     border-radius: 17px;
     overflow: hidden;
-    margin-bottom: 15px;
-    border: solid 2px rgba(0, 0, 0, 0.01);
+    margin: 4px 4px 19px 4px;
+    transition: all .2s;
+    cursor: pointer;
     img {
         width: 100%;
     }
     &.active {
-        border: solid 2px #6200EE;
+        border: solid 4px #6200EE;
+        background: #6200EE;
+        margin: 0px 0px 15px 0px;
     }
 }
 .radio-group {
@@ -88,5 +87,88 @@ p {
     mat-radio-button {
         margin: 5px;
 
+    }
+}
+#radio-group-label {
+    min-height: 50px;
+}
+.card-add-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon_add {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, .05);
+        cursor: pointer;
+        i {
+            font-size: 30px;
+        }
+        &:hover {
+            animation: example infinite 1s!important;
+        }
+    }
+}
+@keyframes example {
+    0% {
+        box-shadow: 1px 0px 0px 0px rgba(0,0,0,.05);
+    }
+    100% {
+        box-shadow: 1px 0px 0px 50px rgba(61, 5, 5, 0.0);
+    }
+}
+
+.card-key {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(47, 47, 47, 0.14);
+    background: linear-gradient(71deg, #972ab8, #e22951 100%, #e22851 100%);
+    padding: 20px;
+    margin: 1rem 0;
+    * {
+        color: #fff;
+    }
+    ul {
+        width: 350px;
+        max-width: 100%;
+        margin: 0 auto 1rem ;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    h4 {
+        text-align: center;
+        margin: 0 0 1rem;
+    }
+    .key {
+        display: block;
+        padding: 0.5rem 1rem;
+        width: 350px;
+        max-width: 100%;
+        border-radius: 7px;
+        background: #fff;
+        color: #6200EE;
+        font-weight: 500;
+        margin: auto;
+        text-align: center;
+        word-wrap:break-word;
+        margin-bottom: 1rem;
+        cursor: pointer;
+    }
+    h5 {
+        font-size: 13px;
+        text-align: center;
+    }
+    span {
+        font-size: 12px;
+        text-align: center;
     }
 }

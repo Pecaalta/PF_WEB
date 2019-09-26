@@ -1,0 +1,47 @@
+<app-nav-bar></app-nav-bar>
+<div class="banner mb-5 animated fadeIn"></div>
+<div class="container animated fadeIn">
+    <div class="row">
+        <h1>Filtros</h1>
+    </div>
+    <div class="row">
+        <p class="description-page">Los filtros creados seran utilisados en tanto los reportes como en el listado de emprendimintos</p>
+    </div>
+    <div class="row">
+        <button class='mr-auto ml-auto mb-5' routerLink='/admin/filters/create' mat-raised-button color="primary" >
+            Crear
+        </button>
+    </div>
+    <div class="row">
+        <table class="w-100 mat-elevation-z8">
+            <colgroup>
+                <col>
+                <col width='150'>
+            </colgroup>
+            <tr>
+                <th>Nombre</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let item of lFilter" >
+                <td >
+                    {{ item.name }}
+                </td>
+                <td class='text-right'>
+                    <button matTooltip='Editar' mat-icon-button (click)="edit(item.id)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button matTooltip='Eliminar' mat-icon-button (click)="delete(item.id)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+            <tr *ngIf="lFilter == null || lFilter.length == 0" >
+                <td colspan='2' class="msjNone" >
+                    No se an creado ningun filtro
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<app-footer></app-footer>

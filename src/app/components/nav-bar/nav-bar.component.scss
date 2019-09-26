@@ -3,8 +3,9 @@ nav {
 }
 header {
     width: 100%;
-    box-shadow: 0px -2px 50px rgba(0, 0, 0, 0.16);
-    background: #F9F9F9;
+    box-shadow: 0 0 40px rgba(0,0,0,.03);
+    border-bottom: 1px solid #f1f1f1;
+    background: #fff;
     border-top: solid 5px  #25ACB5;
     z-index: 2;
     position: relative;

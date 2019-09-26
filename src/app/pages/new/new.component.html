@@ -1,2 +1,45 @@
 <app-nav-bar></app-nav-bar>
+
+<div class="container animated fadeIn" #conteinerPrint>
+    <div class='blog'>
+        <div class="row">
+            <div class="col-12">
+                <h1 class='title'>{{ noticia.title }}</h1>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <span class='date'>{{ noticia.created_at | printDateString }}</span>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <a class='social' matTooltip='LinkedIn' matRipple [href]="'https://www.linkedin.com/sharing/share-offsite/?url=' + url">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a class='social' matTooltip='Facebook' matRipple [href]="'https://www.facebook.com/sharer.php?u=' + url">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class='social' matTooltip='Twitter' matRipple [href]="'https://twitter.com/intent/tweet?url=' + url">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a class='social' matTooltip='Email' matRipple [href]="'https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su='+noticia.title+'&body='+url+'&ui=2&tf=1'">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a class='social' matTooltip='Imprimir' matRipple (click)='printComponent(conteinerPrint)'>
+                    <i class="fas fa-print"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <p>{{ noticia.description }}</p>
+            </div>
+        </div>
+        <figure class='banner'>
+            <div class='loader' [class.hide]="loaderBaner">
+                <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+            </div>
+            <img [class.hide]="!loaderBaner" (load)="onImageLoad($event)" [src]="urlApi + '/' + noticia.url_img" [alt]="noticia.title">
+        </figure>
+        <div class="row">
+            <div class="col-12" [innerHTML]='noticia.html'></div>
+        </div>
+
+    </div>
+</div>
 <app-footer></app-footer>

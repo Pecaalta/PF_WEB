@@ -9,12 +9,15 @@ import { msg } from 'src/app/models/msg';
 export class ChatMessageComponent implements OnInit {
   @Input() data:any = null;
   @Input() admin:boolean = null;
-
+  @Input() separar:boolean = null;
+  
   
 
   constructor() { }
 
   ngOnInit() {
+    
   }
+
 
 }
