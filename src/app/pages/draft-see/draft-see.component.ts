@@ -35,7 +35,16 @@ export class DraftSeeComponent implements OnInit {
     y: null,
     ods: [false,true,false,true,false,true,false,false,false,false,false,false],
     sector: [],
-    role:[]
+    role:[],
+
+    web: '',
+    facebook: '',
+    instagram: '',
+    twitter: '',
+    branchactivity: '',
+    
+    startactivitytime: '',
+    endactivitytime: ''
   }
   apoyo:string = '';
   sUrlApi:string = environment.URLAPI;

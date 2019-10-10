@@ -1,0 +1,108 @@
+<app-nav-bar></app-nav-bar>
+<div #screen ></div>
+      
+ 
+<div class="container mt-5 animated fadeIn">
+    <div class="row" >
+        <div class="col-sm-12 col-md-8">
+            <input name='title' class='input' [(ngModel)]="noticia.title" placeholder="Titulo de noticia" type="text">
+        </div>
+        <div class="col-sm-12 col-md-4 mb-3">
+            <button class='ml-0' mat-raised-button color="primary"  routerLink='/admin/news' >Canelar</button>
+            <button class='m-1' (click)="create()" mat-raised-button color="primary" >Guardar</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div cdkDropListGroup>
+    <div class="example-container">
+        <div cdkDropList [cdkDropListData]="lModule" class="module-list" (cdkDropListDropped)="drop($event)">
+            <div class="module-box" *ngFor="let item of lModule" cdkDrag>
+                <div class='main' [matTooltip]="item.name">
+                    <i [class]="item.icon"></i>
+                </div>
+                <div *cdkDragPreview class='main'>
+                    <i [class]="item.icon"></i>
+                </div>
+                <div class="module-box-placeholder" *cdkDragPlaceholder></div>
+            </div>
+        </div>
+    </div>
+<!--
+    <div class="container mt-5 animated fadeIn">
+        <div class="col-12 example-container">
+            <div cdkDropList [cdkDropListData]="html" class="html-list" (cdkDropListDropped)="drop($event)">
+                <div class="html-box" *ngFor="let row of html;let ir = index;" cdkDrag>
+
+                    <div cdkDropList [cdkDropListData]="html" class="html-row" (cdkDropListDropped)="drop($event)">
+                    
+        
+        
+        
+        
+                        <div class="html-box">
+                            <button class='btn-add-top' (click)="editBody(0,[ir])">fila antes</button>
+                            <button class='btn-add-left' (click)="editBody(1,[ir,0])">culumna antes</button>
+                            <button class='btn-add-right' (click)="editBody(2,[ir,0])">culumna antes</button>
+                            <button class='btn-add-bottom' (click)="editBody(3,[ir])">fila despues</button>
+                        </div>
+                        <div class="html-box" *ngFor="let item of row;let ii = index;" cdkDrag>
+                            <button class='btn-add-top' (click)="editBody(0,[ir])">fila antes</button>
+                            <button class='btn-add-left' (click)="editBody(1,[ir,ii])">culumna antes</button>
+                            <button class='btn-add-right' (click)="editBody(2,[ir,ii])">culumna antes</button>
+                            <button class='btn-add-bottom' (click)="editBody(3,[ir])">fila despues</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+
+
+    <div class='row-html' *ngFor="let row of html;let irow = index;" >
+        <div class="btn-add-col">
+            <button class='btn-add' (click)="editBody('add-start-col', irow)">+</button>
+        </div>
+        <div class="col-html" *ngFor="let col of row;let icol = index;">
+            <button class='btn-delete' (click)="editBody('remove-col', irow, icol)">-</button>
+            <div cdkDropList class='box-item-html' [cdkDropListData]="col" (cdkDropListDropped)="drop($event)">
+                <div *ngFor="let item of col;let iitem = index;">
+                    <div class="item-html" cdkDrag>
+                        <div class="item-html-handle" cdkDragHandle>
+                            <svg width="12px" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                        </div>
+                        
+                        <div [innerHTML]="create_html(item['config'])"></div>
+                        
+                        {{ item | json}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-add-col">
+            <button class='btn-add' (click)="editBody('add-end-col', irow)">+</button>
+        </div>
+    </div>
+    <div class='row-html-end'>
+        <button class='btn-add' (click)="editBody('add-row')">+</button>
+    </div>
+</div>
+
+
+
+
+      <div id="download">
+        <img #canvas>
+        <a #downloadLink></a>
+      </div>
+   

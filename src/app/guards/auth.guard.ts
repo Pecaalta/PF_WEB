@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       let rut = (state.url).split('/');
       if ( ( rut[1] == 'login' || rut[1] == 'registro' || rut[1] == 'registry') && this._user.isLogeado() ) this.router.navigate(['/']);
+      if ( rut[1] == 'profile' && !this._user.isLogeado() ) this.router.navigate(['/']);
       else if ( ( rut[1] == 'login' || rut[1] == 'registro' || rut[1] == 'registry' ) && !this._user.isLogeado() ) return true;
       else if ( rut[1] == 'home' || rut[1] == 'news' ) return true; 
       else if (

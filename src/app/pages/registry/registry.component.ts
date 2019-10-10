@@ -4,6 +4,8 @@ import { userSession } from 'src/app/models/userSession';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import { MetadataService } from 'src/app/services/metadata.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ImageCroppedComponent } from 'src/app/components/modals/image-cropped/image-cropped.component';
 
 @Component({
   selector: 'app-registry',
@@ -33,8 +35,10 @@ export class RegistryComponent implements OnInit {
     private _MetadataService :MetadataService,
     private _snackBar: MatSnackBar,
     private _user:UserService,
-    private _router: Router
-  ) { }
+    private _router: Router,
+    public dialog: MatDialog
+  ) { 
+  }
 
 
   ngOnInit() {
@@ -85,22 +89,24 @@ export class RegistryComponent implements OnInit {
   public imagePath;
   public message: string;
  
+  customisar(){
+
+  }
+
+
   preview(files) {
-    if (files.length === 0) return;
- 
-    var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return;
-    }
- 
-    var reader = new FileReader();
-    this.user.img = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imagePath = reader.result.toString();
-      this.user.Base64 = reader.result.toString();
-    }
+    const dialogRef = this.dialog.open(ImageCroppedComponent, {
+      width: '800px',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      data: event
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === false) return;      
+      this.imagePath = result.base64;
+      this.user.Base64 = result.base64;
+    });
   }
 
 

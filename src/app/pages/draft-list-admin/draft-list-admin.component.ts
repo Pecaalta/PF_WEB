@@ -137,12 +137,11 @@ export class DraftListAdminComponent implements OnInit {
       let data = null;
       if (this.MarckComparar && comparador != null) {
         let w = ((this.MarckMax / (this.MarckMin + comparador)) * this.MarckMaxSize) + this.MarckMinSize 
-        console.log(w);
         data = {
           icon: icon,
           markerColor: color,
-          iconAnchor: [w, w * (45/35)],
-          iconSize: [w, w * (45/35)],
+  //        iconAnchor: [w, w * (45/35)],
+   //       iconSize: [w, w * (45/35)],
         } 
         
       } else {
@@ -151,9 +150,14 @@ export class DraftListAdminComponent implements OnInit {
           markerColor: color,
         }
       }
+      var redMarker = L.ExtraMarkers.icon(data);
+    
 
-      var redMarker = L.AwesomeMarkers.icon(data);
+
+
+      //var redMarker = L.AwesomeMarkers.icon(data);
       L.marker([x,y], {icon: redMarker}).addTo(this.layerGroup)
+      //L.marker([x,y], {icon: redMarker}).addTo(this.layerGroup)
       //L.marker([x,y]).addTo(this.layerGroup)
       .bindPopup(title);
 

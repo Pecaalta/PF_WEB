@@ -31,8 +31,10 @@ export class DraftListComponent implements OnInit {
         this.bDone = true;
       },
       (oError) => {
-        this.msg(oError.body['message']);
+        console.log(oError);
         this.bDone = true;
+        
+        //this.msg(oError.body['message']);
       },
     );
   }

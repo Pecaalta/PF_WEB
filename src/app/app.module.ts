@@ -4,6 +4,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 import { AppComponent } from './app.component';
 
@@ -63,9 +65,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSelectModule} from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { NewsPublicListComponent } from './pages/news-public-list/news-public-list.component';
 import { DraftSeeComponent } from './pages/draft-see/draft-see.component';
@@ -80,6 +83,12 @@ import { FilterComponent } from './components/modals/filter/filter.component';
 import { ConfigReportComponent } from './components/modals/config-report/config-report.component';
 import { MsjComponent } from './components/modals/msj/msj.component';
 import { RenamePipe } from './pipes/rename.pipe';
+
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ImageCroppedComponent } from './components/modals/image-cropped/image-cropped.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { NewletterListComponent } from './pages/newletter-list/newletter-list.component';
+import { NewletterFormComponent } from './pages/newletter-form/newletter-form.component';
 
 
 @NgModule({
@@ -123,7 +132,11 @@ import { RenamePipe } from './pipes/rename.pipe';
     FilterComponent,
     ConfigReportComponent,
     MsjComponent,
-    RenamePipe
+    RenamePipe,
+    ImageCroppedComponent,
+    UserListComponent,
+    NewletterListComponent,
+    NewletterFormComponent
   ],
   imports: [
     BrowserModule,
@@ -132,7 +145,9 @@ import { RenamePipe } from './pipes/rename.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
+    DragDropModule,
+    
+    MonacoEditorModule.forRoot() ,
     AngularEditorModule,
     ChartsModule,
 
@@ -157,8 +172,10 @@ import { RenamePipe } from './pipes/rename.pipe';
     MatNativeDateModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatTabsModule,
     
-    LoaderModule.forRoot()
+    LoaderModule.forRoot(),
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [
@@ -175,7 +192,8 @@ import { RenamePipe } from './pipes/rename.pipe';
     CreateDraftComponent,
     FilterComponent,
     ConfigReportComponent,
-    MsjComponent
+    MsjComponent,
+    ImageCroppedComponent
   ]
 })
 export class AppModule { }

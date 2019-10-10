@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FilterSetting } from 'src/app/models/FilterSetting';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanyService } from 'src/app/services/company.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FilterService } from 'src/app/services/filter.service';
 
@@ -115,6 +115,7 @@ export class FilterCreateComponent implements OnInit {
   }
   
   constructor(
+    private _router: Router,
     private _snackBar: MatSnackBar,
     private _route:ActivatedRoute,
     private _Filter: FilterService,
@@ -146,7 +147,12 @@ export class FilterCreateComponent implements OnInit {
     }
     req.subscribe(
       (e) => {
-
+        if (e.status) {
+          this.msg('La operacion a sido exitosa');
+          this._router.navigate(['/admin/filters/']);
+        } else {
+          this.msg(e.message);
+        }
       },
       (oError) => {
         this.msg(oError.body.message);

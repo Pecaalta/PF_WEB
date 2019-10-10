@@ -1,5 +1,10 @@
 <app-nav-bar></app-nav-bar>
 <div class="banner mb-5 animated fadeIn"></div>
+<div class="info-photo">
+    <div class="container">
+            <p>foto por Jo Szczepanska / tomada de </p><a href="https://unsplash.com/joszczepanska">https://unsplash.com/joszczepanska</a>
+    </div>
+</div>
 <div class="container animated fadeIn">
     <div class="row">
         <div class="col-12">
@@ -27,6 +32,20 @@
             </div>      
             <mat-datepicker #picker></mat-datepicker>
         </div>
+
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="nDraft.web" placeholder="Web" type="text">
+        </div>
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="nDraft.facebook" placeholder="Facebook" type="text">
+        </div>
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="nDraft.instagram" placeholder="Instagram" type="text">
+        </div>
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="nDraft.twitter" placeholder="Twitter" type="text">
+        </div>
+
         <div class="col-sm-12 col-md-8">
             <textarea class='h-200' [(ngModel)]="nDraft.description" placeholder="Descripcion del proyecto"></textarea>
         </div>

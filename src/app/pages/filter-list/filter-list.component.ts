@@ -23,6 +23,10 @@ export class FilterListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.loade();
+  }
+  
+  loade() {
     this._Filter.getAll().subscribe(
       (e) => {
         if (e['status']) this.lFilter = e['message'];
@@ -34,7 +38,9 @@ export class FilterListComponent implements OnInit {
     )
   }
 
-  delete(id) {
+  delete(value) {
+    let id = value['id'];
+    console.log(id);
     const dialogRef = this.dialog.open(DeleteComponent, {
       width: '400px',
       data: { text: 'Esta seguro desea eliminar el filtro' }
@@ -46,6 +52,9 @@ export class FilterListComponent implements OnInit {
           (e)=>{
             if (e.status) {
               this.msg('Se a eliminado con exito');
+              this.loade();
+            } else {
+              this.msg(e.message);
             }
           },
           (oError) => {

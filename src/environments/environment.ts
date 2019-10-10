@@ -6,6 +6,11 @@ export const environment = {
   production: false,
   URLAPI: 'http://localhost/CodeIgniter-3.0.1/',
   LOCALSTORAGE: 'Proyectofinal',
+
+  facebook: 'sss',
+  instagram: 'ss',
+  twitter: 'ss',
+
   firebaseConfig: {
     apiKey: "AIzaSyBTrRnkYGf5omqUcJKqE8CZg9JeIrTHL5s",
     authDomain: "proyectofinal-5adb5.firebaseapp.com",

@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
 })
 export class CompanyService {
 
-  prefigo = "/company";
+  prefigo = "/Company/";
 
   constructor(
     private httpClient: HttpClient

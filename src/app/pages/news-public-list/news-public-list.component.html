@@ -18,7 +18,28 @@
             </div>
         </div>
         <div class="col-12 col-md-3">
-            <input class='input' placeholder="Buscar noticia" type="text">
+            <div class="mb-3">
+                <input class='input' placeholder="Buscar noticia" type="text">
+            </div>
+            <hr>
+            <div class="mb-3">
+                <h2>Subscrivite</h2>
+                <p>Resive las ultimas noticias</p>
+                <input class='input mt-0' [(ngModel)]="email" placeholder="Buscar noticia" type="text">
+                <button class='w-100 mb-3' mat-raised-button color="primary" (click)="subscraip()" >
+                    Subscribirse
+                </button>
+            </div>
+            <hr>
+            <div class="mb-3">
+                <h2 class='social-title'>Seguinos</h2>
+                <div class='social'>
+                    <a *ngIf="facebook != ''" [href]="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a *ngIf="instagram != ''" [href]="instagram"><i class="fab fa-instagram"></i></a>
+                    <a *ngIf="twitter != ''" [href]="twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <hr>
         </div>
     </div>
 </div>

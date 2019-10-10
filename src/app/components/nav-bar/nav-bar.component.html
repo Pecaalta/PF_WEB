@@ -3,9 +3,9 @@
         <div class="container">
             <div class="row">
                 <div class="col text-right">
-                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                    <a href=""><i class="fab fa-instagram"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a *ngIf="facebook != ''" [href]="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a *ngIf="instagram != ''" [href]="instagram"><i class="fab fa-instagram"></i></a>
+                    <a *ngIf="twitter != ''" [href]="twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <img  [src]=" url + '/' + user.url_img" alt="" srcset="">
             </figure>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item>Perfil</button>
+                <button mat-menu-item  routerLink="/profile" >Perfil</button>
                 <button mat-menu-item (click)="logout()">Salir</button>
             </mat-menu>
         </div>
@@ -36,7 +36,7 @@
                         <img  [src]=" url + '/' + user.url_img" alt="" srcset="">
                     </figure>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Perfil</button>
+                        <button mat-menu-item routerLink="/profile">Perfil</button>
                         <button mat-menu-item (click)="logout()">Salir</button>
                     </mat-menu>
                 </div>

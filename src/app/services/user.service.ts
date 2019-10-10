@@ -74,23 +74,46 @@ export class UserService {
     }
   }
 
+
+  get(id:string){
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo + "?id=" + id).pipe(
+        catchError(this.handleError)
+    )
+  }
+
+  getAll(){
+    return this.httpClient.get<any>(environment.URLAPI + this.prefigo ).pipe(
+        catchError(this.handleError)
+    )
+  }
+
+  put(noticia:any){
+    return this.httpClient.put(environment.URLAPI + this.prefigo ,noticia, this.getheaders() ).pipe(
+        catchError(this.handleError)
+    )
+  }
+
+  delete(id:string){
+    return this.httpClient.delete<any>(environment.URLAPI + this.prefigo + "/" + id, this.getheaders() ).pipe(
+        catchError(this.handleError)
+    )
+  }
+
   /**
    * Genera el headers de los riquest
    */
   getheaders(){
     let Token = this.getToken();
-    
-    if (Token == '') {
+    if (Token != '') {
       return {
         headers: new HttpHeaders({
             'Authorization': Token
         })
       };
     } else {
-      
-    return {
-      headers: new HttpHeaders({})
-    };
+      return {
+        headers: new HttpHeaders({})
+      };
     }
   }
   /**

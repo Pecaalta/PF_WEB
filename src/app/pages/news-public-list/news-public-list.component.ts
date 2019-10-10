@@ -13,6 +13,12 @@ export class NewsPublicListComponent implements OnInit {
   lNews:any[] = [];
   admin:boolean = false;
   url:string = environment.URLAPI;
+  
+  facebook:string = environment.facebook;
+  instagram:string = environment.instagram;
+  twitter:string = environment.twitter;
+
+  email:string = '';
   constructor(
     private _MetadataService :MetadataService,
     private _user:UserService,
@@ -29,5 +35,17 @@ export class NewsPublicListComponent implements OnInit {
     );
   }
 
+  subscraip() {
+    if (this.email != '') {
+      this._news.subscribirse(this.email).subscribe(
+        (e)=> {
+          console.log(e);
+          
+        }
+      );
+
+    }
+
+  }
 
 }

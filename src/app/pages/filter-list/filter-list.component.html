@@ -1,5 +1,11 @@
 <app-nav-bar></app-nav-bar>
 <div class="banner mb-5 animated fadeIn"></div>
+
+<div class="info-photo">
+        <div class="container">
+                <p>foto por Rudy and Peter Skitterians / tomada de </p><a href="https://pixabay.com/es/photos/yashica-filtro-c%C3%A1mara-vintage-711794/">pixabay.com</a>
+        </div>
+    </div>
 <div class="container animated fadeIn">
     <div class="row">
         <h1>Filtros</h1>
@@ -27,10 +33,10 @@
                     {{ item.name }}
                 </td>
                 <td class='text-right'>
-                    <button matTooltip='Editar' mat-icon-button (click)="edit(item.id)">
-                        <mat-icon>edit</mat-icon>
+                    <button matTooltip='Editar' mat-icon-button [routerLink]="'/admin/filters/'+item.id">
+                        <mat-icon>edit  </mat-icon>
                     </button>
-                    <button matTooltip='Eliminar' mat-icon-button (click)="delete(item.id)">
+                    <button matTooltip='Eliminar' mat-icon-button (click)="delete(item)">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

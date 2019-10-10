@@ -1,2 +1,119 @@
 <app-nav-bar></app-nav-bar>
+<div class='banner'></div>
+
+
+<div class="success-checkmark" *ngIf="done">
+    <div class="check-icon">
+        <span class="icon-line line-tip"></span>
+        <span class="icon-line line-long"></span>
+        <div class="icon-circle"></div>
+        <div class="icon-fix"></div>
+    </div>
+</div>
+<h2 *ngIf="done" class='text-center d-block mb-60'>Los efectos surtitran efecto la proxima ves que inicie sesion</h2>
+
+<div class="container" *ngIf="!done">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <div class="avatar-file avatar">
+                <input name='file' #file type="file" accept='image/*' (change)="preview(file.files)">
+                <div class='content'>
+                    <figure *ngIf="imagePath">
+                        <img [src]="imagePath">
+                    </figure>
+                    <mat-icon *ngIf="!imagePath">
+                        add_photo_alternate
+                    </mat-icon>
+                </div>
+                <div class="hover">
+                    <mat-icon >
+                        add_photo_alternate
+                    </mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label for="email"> Email </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' id='email' [(ngModel)]="user.email" (keyup.enter)="login()" placeholder="Email" type="text">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label for="name"> Nombre </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' id='name' [(ngModel)]="user.name" (keyup.enter)="login()" placeholder="Nombre" type="text">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label for="age"> Edad </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' id='age' [(ngModel)]="user.age" (keyup.enter)="login()" placeholder="Edad" type="text">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label for="CI"> C.I. </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' id='CI' [(ngModel)]="user.CI" (keyup.enter)="login()" placeholder="C.I." type="text">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label for="phone"> Telefono </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' id='phone' [(ngModel)]="user.phone" (keyup.enter)="login()" placeholder="Telefono" type="text">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label for="password"> Contraseña </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' id='password' [(ngModel)]="user.password" (keyup.enter)="login()" placeholder="Contraseña" type="password">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-12"> 
+            <label for=""> Repetir contraseña </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="user.repass" (keyup.enter)="login()" placeholder="Repetir contraseña" type="password">
+        </div>
+    </div>
+    
+    <div class="row" *ngIf="!_user.getAdmin()">
+
+        <hr class='w-80'>
+        <div class="col-sm-12"> 
+            <label for=""> Contraseña actual </label> 
+        </div>
+        <div class="col-sm-12">
+            <input class='input' [(ngModel)]="user.currentpass" (keyup.enter)="login()" placeholder="Contraseña actual" type="password">
+        </div>
+        <hr class='w-80'>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <button mat-raised-button color="primary" (click)="login()" >Guardar</button>
+        </div>
+    </div>
+</div>
+    
 <app-footer></app-footer>

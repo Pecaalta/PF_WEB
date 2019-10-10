@@ -17,7 +17,7 @@ export class NewsService {
   ) { }
 
   get_all(){
-    return this.httpClient.get<any>(environment.URLAPI + this.prefigo, this.getheaders() ).pipe(
+    return this.httpClient.get<any[]>(environment.URLAPI + this.prefigo, this.getheaders() ).pipe(
         catchError(this.handleError)
     )
   }
@@ -47,6 +47,11 @@ export class NewsService {
   }
 
 
+  subscribirse(email:string){
+    return this.httpClient.post<any>(environment.URLAPI +  "subscriber", { 'email': email }, this.getheaders() ).pipe(
+        catchError(this.handleError)
+    )
+  }
 
   /**
    * Genera el headers de los riquest

@@ -35,7 +35,16 @@ export class DraftNewComponent implements OnInit {
     phone:'',
     ods: new Array(17).fill(false),
     sector: [],
-    role: []
+    role: [],
+
+    web: '',
+    facebook: '',
+    instagram: '',
+    twitter: '',
+    branchactivity: '',
+    
+    startactivitytime: '',
+    endactivitytime: '',
   }
 
   sUrlApi:string = '';
@@ -61,7 +70,7 @@ export class DraftNewComponent implements OnInit {
     this.Maps = L.map('map').setView([-34.340289, -56.712430], 13);
     this.layerGroup = L.layerGroup().addTo(this.Maps);
     this.markerPopup = L.popup().setLatLng([0,0]).setContent("Aqui te encuntras").openOn(this.layerGroup);
-    var redMarker = L.AwesomeMarkers.icon({
+    var redMarker = L.ExtraMarkers.icon({
       icon: 'building',
       markerColor: 'red'
     });

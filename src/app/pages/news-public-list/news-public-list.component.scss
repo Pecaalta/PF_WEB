@@ -37,3 +37,33 @@
         border-bottom: solid 1px rgba(0, 0, 0, 0.2)
     }
 }
+
+.social-title {
+    text-align: center!important;
+    margin: 1rem auto;
+    display: block;
+}
+.social {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: #666;
+        padding: 5px;
+        font-size: 24px;
+        &:hover {
+            color: #333;
+            .fa-facebook-f {
+                color: #1877f2;
+            }
+            .fa-instagram {
+                color: #c32aa3;
+            }
+            .fa-twitter {
+                color: #1da1f2;
+            }
+        }
+    }
+}

@@ -24,5 +24,7 @@ export class ChatUserComponent implements OnInit {
   hidde() {
     this._fire.ocultChat(this.id);
   }
-
+  ver() {
+    this.check = false;
+  }
 }

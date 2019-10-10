@@ -18,6 +18,16 @@ export interface newProyect {
     apoyoOtro:boolean,
     role: any[]
 
+    web?:string,
+    facebook?:string,
+    instagram?:string,
+    twitter?:string,
+    branchactivity?:string,
+    
+    startactivitytime:string,
+    endactivitytime:string,
+
+
     status?:number,
     ods?:boolean[],
     sector:{id:number,status:boolean,img:string, name:string}[],

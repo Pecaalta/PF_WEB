@@ -1,0 +1,17 @@
+<div class='ConteinerCropper'>
+    <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="1 / 1"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+    ></image-cropper>
+</div>
+<div class='options text-center'>
+    <button class='m-1' mat-stroked-button (click)="exit(false)" >Cancelar</button>
+    <button class='m-1' mat-raised-button (click)="exit(true)" color="primary" >Ok</button>
+</div>

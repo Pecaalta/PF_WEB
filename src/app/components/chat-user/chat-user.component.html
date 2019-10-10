@@ -1,10 +1,9 @@
-<div class="cardUser" matRipple [class.diffusion]='isDiffusion'>
+<div class="cardUser" matRipple [class.diffusion]='isDiffusion' (click)="ver()">
     <figure>
         <img *ngIf='!isDiffusion' [src]="img" alt="" srcset="">
         <i *ngIf='isDiffusion' class="fas fa-bell"></i>
     </figure>
-    <h4>{{ name }}</h4>
-    <span class='check' [class.active]='check'></span>
+    <h4 [class.check]='check'> {{ name }}</h4>
     
     <button class="btn_delete" matTooltip='Ocultar' (click)="hidde()" mat-icon-button>
         <mat-icon>close</mat-icon>

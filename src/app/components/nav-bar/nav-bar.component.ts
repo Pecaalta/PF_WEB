@@ -12,7 +12,9 @@ import { environment } from 'src/environments/environment';
 export class NavBarComponent implements OnInit {
 
   user:userSession = null;
-
+  facebook:string = environment.facebook;
+  instagram:string = environment.instagram;
+  twitter:string = environment.twitter;
   links:any[] = []
 
   url:string = environment.URLAPI;
@@ -41,7 +43,8 @@ export class NavBarComponent implements OnInit {
       { 'path': '/admin/draft',    'name':'Empresas' },
       { 'path': '/admin/chat',     'name':'Consultas' },
       { 'path': '/admin/report',   'name':'Reportes' },
-      { 'path': '/admin/user/:id', 'name':'Usuarios' }
+      { 'path': '/admin/user',     'name':'Usuarios' },
+      { 'path': '/admin/newletter','name':'Difusiones' }
     ];
   }
   pascua:number = 0;
@@ -70,7 +73,7 @@ export class NavBarComponent implements OnInit {
   }
   logout(){
     this._user.logout();
-    this.router.navigate(['/401']);
+    this.router.navigate(['/login']);
   }
          
 }
